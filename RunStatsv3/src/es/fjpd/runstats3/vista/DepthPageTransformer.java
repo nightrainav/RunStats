@@ -5,7 +5,7 @@ import android.support.v4.view.*;
 import android.view.*;
 
 // no se usa porque no encuentra ViewPager.PageTransformer (implements)
-public class DepthPageTransformer 
+public class DepthPageTransformer implements ViewPager.PageTransformer
  {
 	private static float MIN_SCALE = 0.75f;
 

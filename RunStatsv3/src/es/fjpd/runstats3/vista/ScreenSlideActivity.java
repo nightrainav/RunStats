@@ -76,6 +76,7 @@ public class ScreenSlideActivity extends FragmentActivity
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+		//mPager.setPageTransformer(true, new DepthPageTransformer());
 		// colocamos el viewpager en la posicion inicial (la que se corresponde con la opcion elegida por el usuario en el menu)
 		mPager.setCurrentItem(posicionInicial, true);
         mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
