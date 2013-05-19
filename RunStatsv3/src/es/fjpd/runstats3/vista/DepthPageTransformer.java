@@ -1,7 +1,6 @@
-package es.fjpd.runstats2.vista;
+package es.fjpd.runstats3.vista;
 
 
-import android.support.v4.view.*;
 import android.view.*;
 
 // no se usa porque no encuentra ViewPager.PageTransformer (implements)

@@ -1,4 +1,4 @@
-package es.fjpd.runstats2.vista;
+package es.fjpd.runstats3.vista;
 
 import android.os.*;
 import android.support.v4.app.*;
@@ -6,8 +6,8 @@ import android.util.*;
 import android.view.*;
 import android.webkit.*;
 import android.widget.*;
-import es.fjpd.runstats2.*;
-import es.fjpd.runstats2.logica.*;
+import es.fjpd.runstats3.*;
+import es.fjpd.runstats3.logica.*;
 
 /**
  * A fragment representing a single step in a wizard. The fragment shows a dummy title indicating

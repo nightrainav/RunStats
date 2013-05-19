@@ -1,14 +1,13 @@
-package es.fjpd.runstats2.vista;
+package es.fjpd.runstats3.vista;
 
 import android.app.*;
-import android.content.*;
 import android.content.pm.*;
 import android.os.*;
 import android.view.*;
 import android.webkit.*;
 import android.widget.*;
-import es.fjpd.runstats2.*;
-import es.fjpd.runstats2.logica.*;
+import es.fjpd.runstats3.*;
+import es.fjpd.runstats3.logica.*;
 
 // Obsoleta - Sustituida por ScreenSlideActivity
 

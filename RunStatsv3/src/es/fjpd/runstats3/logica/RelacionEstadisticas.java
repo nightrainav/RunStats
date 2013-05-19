@@ -1,8 +1,8 @@
-package es.fjpd.runstats2.logica;
+package es.fjpd.runstats3.logica;
 
 import java.util.ArrayList;
 
-import es.fjpd.runstats2.logica.Estadistica.*;
+import es.fjpd.runstats3.logica.Estadistica.*;
 
 
 public class RelacionEstadisticas
@@ -38,7 +38,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Sesiones", "Distancia (km)", "Tiempo", "Calor&iacute;as"});
+			una.setTitulosCols(new String[] {"Sesiones", "Distancia", "Tiempo", "Calorías"});
 
 			relacion.add(una);
 			/*************************************/
@@ -66,7 +66,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Tipo actividad", "Sesiones", "Distancia total (km)", "Distancia media (km)", "Tiempo total", "Tiempo medio", "Calor&iacute;as total", "Calor&iacute;as media"});
+			una.setTitulosCols(new String[] {"Tipo deporte", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
 
 			relacion.add(una);
 			/*************************************/
@@ -94,7 +94,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Sesiones", "Distancia total (km)", "Distancia media (km)", "Tiempo total", "Tiempo medio", "Calor&iacute;as total", "Calor&iacute;as media"});
+			una.setTitulosCols(new String[] {"Año", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
 
 			relacion.add(una);
 			/*************************************/
@@ -124,7 +124,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Tipo actividad", "Sesiones", "Distancia total (km)", "Distancia media (km)", "Tiempo total", "Tiempo medio", "Calor&iacute;as total", "Calor&iacute;as media"});
+			una.setTitulosCols(new String[] {"Año", "Tipo deporte", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
 
 			relacion.add(una);
 			/*************************************/
@@ -154,7 +154,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Mes", "Sesiones", "Distancia total (km)", "Distancia media (km)", "Tiempo total", "Tiempo medio", "Calor&iacute;as total", "Calor&iacute;as media"});
+			una.setTitulosCols(new String[] {"Año", "Mes", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
 
 			relacion.add(una);
 			/*************************************/
@@ -185,7 +185,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Mes", "Tipo actividad", "Sesiones", "Distancia total (km)", "Distancia media (km)", "Tiempo total", "Tiempo medio", "Calor&iacute;as total", "Calor&iacute;as media"});
+			una.setTitulosCols(new String[] {"Año", "Mes", "Tipo deporte", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
 
 			relacion.add(una);
 			/*************************************/
@@ -211,7 +211,7 @@ public class RelacionEstadisticas
 
 							 });
 
-			una.setTitulosCols(new String[] {"Tipo actividad", "Sesiones", "Calor&iacute;as de media", "Calor&iacute;as por km", "Calor&iacute;as por hora"});
+			una.setTitulosCols(new String[] {"Tipo deporte", "Sesiones", "Calorías media", "Calorías/km", "Calorías/hora"});
 
 			relacion.add(una);
 			/*************************************/
@@ -225,8 +225,8 @@ public class RelacionEstadisticas
 
 			una.setTitulo("Relación completa");
 			una.setDescripcion("Relación completa de sesiones");
-			una.setConsultaSQL("select year, month, startTime, startTime, endTime, sportType, distance," +
-							   "runtime, calories from session order by startTime desc ");
+			una.setConsultaSQL("select year, month, startTime as c2, startTime, endTime, sportType, distance," +
+							   "runtime, calories from session order by c2 desc ");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
@@ -240,7 +240,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Mes", "Dia" , "Hora inicio", "Hora fin", "Tipo actividad", "Distancia (km)", "Tiempo", "Calor&iacute;as "});
+			una.setTitulosCols(new String[] {"Año", "Mes", "Dia" , "Inicio", "Fin", "Tipo deporte", "Distancia", "Tiempo", "Calorías "});
 
 			relacion.add(una);
 			/*************************************/

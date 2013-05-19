@@ -1,4 +1,4 @@
-package es.fjpd.runstats2.vista;
+package es.fjpd.runstats3.vista;
 
 import android.app.*;
 import android.content.*;
@@ -7,8 +7,8 @@ import android.os.*;
 import android.util.*;
 import android.view.*;
 import android.widget.*;
-import es.fjpd.runstats2.*;
-import es.fjpd.runstats2.logica.*;
+import es.fjpd.runstats3.*;
+import es.fjpd.runstats3.logica.*;
 import java.util.*;
 
 public class MainActivityView extends Activity

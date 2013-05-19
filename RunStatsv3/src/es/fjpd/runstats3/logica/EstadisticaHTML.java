@@ -1,8 +1,8 @@
-package es.fjpd.runstats2.logica;
+package es.fjpd.runstats3.logica;
 
 import android.database.*;
 import android.database.sqlite.*;
-import es.fjpd.runstats2.logica.Estadistica.*;
+import es.fjpd.runstats3.logica.Estadistica.*;
 import android.text.format.*;
 import java.text.*;
 

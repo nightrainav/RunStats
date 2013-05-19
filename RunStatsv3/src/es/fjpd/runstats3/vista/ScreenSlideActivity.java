@@ -1,4 +1,4 @@
-package es.fjpd.runstats2.vista;
+package es.fjpd.runstats3.vista;
 
 
 import android.app.*;
@@ -8,11 +8,12 @@ import android.os.*;
 import android.support.v4.app.*;
 import android.support.v4.view.*;
 import android.view.*;
-import es.fjpd.runstats2.*;
-import es.fjpd.runstats2.logica.*;
+import es.fjpd.runstats3.*;
+import es.fjpd.runstats3.logica.*;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+
 
 /**
  * Demonstrates a "screen-slide" animation using a {@link ViewPager}. Because {@link ViewPager}

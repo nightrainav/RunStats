@@ -1,4 +1,4 @@
-package es.fjpd.runstats2.logica;
+package es.fjpd.runstats3.logica;
 
 import android.content.*;
 import android.telephony.*;
