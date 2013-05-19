@@ -68,6 +68,7 @@ public class MainActivityView extends Activity
 						//BaseDatos.cerrar();
 						finish();
 					}
+					
 					// si no hemos encontrado la bd no asociamos codigo al click 
 					else if (!BaseDatos.getRutaBD().equals(""))
 					{

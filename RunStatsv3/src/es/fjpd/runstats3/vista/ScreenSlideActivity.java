@@ -8,6 +8,7 @@ import android.os.*;
 import android.support.v4.app.*;
 import android.support.v4.view.*;
 import android.view.*;
+import android.widget.*;
 import es.fjpd.runstats3.*;
 import es.fjpd.runstats3.logica.*;
 
@@ -26,7 +27,7 @@ import android.support.v4.app.FragmentManager;
  *
  * @see ScreenSlidePageFragment
  */
-public class ScreenSlideActivity extends FragmentActivity
+public class ScreenSlideActivity extends FragmentActivity 
 {
     /**
      * The number of pages (wizard steps) to show in this demo.
@@ -37,6 +38,13 @@ public class ScreenSlideActivity extends FragmentActivity
 	 * Posicion inicial. Primera pagina solicitada en el menu
 	 */
 	private int posicionInicial=0;
+
+
+	/**
+	 * Posicion inicial. Primera pagina solicitada en el menu
+	 */
+	private int posicionActual=0;
+	
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
@@ -47,6 +55,8 @@ public class ScreenSlideActivity extends FragmentActivity
      * The pager adapter, which provides the pages to the view pager widget.
      */
     private PagerAdapter mPagerAdapter;
+	
+	private Context cntx = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -88,6 +98,7 @@ public class ScreenSlideActivity extends FragmentActivity
 					// fragment expose actions itself (rather than the activity exposing actions),
 					// but for simplicity, the activity provides the actions in this sample.
 
+					setPosicionActual(position);
 
 					if (Build.VERSION.RELEASE.startsWith("4"))
 					{
@@ -107,7 +118,7 @@ public class ScreenSlideActivity extends FragmentActivity
         // inflamos el menu
 		if (Build.VERSION.RELEASE.startsWith("4"))
 		{
-			
+
 			getMenuInflater().inflate(R.menu.menu_screen_slide, menu);
 
 			menu.findItem(R.id.action_previous).setEnabled(mPager.getCurrentItem() > 0);
@@ -128,7 +139,7 @@ public class ScreenSlideActivity extends FragmentActivity
 		else
 		{
 			MenuItem item = menu.add(Menu.NONE, android.R.id.home, Menu.NONE, R.string.action_back);
-			
+
 		}
         return true;
     }
@@ -139,6 +150,12 @@ public class ScreenSlideActivity extends FragmentActivity
         switch (item.getItemId())
 		{
             case android.R.id.home:
+                // Navigate "up" the demo structure to the launchpad activity.
+                // See http://developer.android.com/design/patterns/navigation.html for more.
+                NavUtils.navigateUpTo(this, new Intent(this, MainActivityView.class));
+                return true;
+
+			case R.id.action_back:
                 // Navigate "up" the demo structure to the launchpad activity.
                 // See http://developer.android.com/design/patterns/navigation.html for more.
                 NavUtils.navigateUpTo(this, new Intent(this, MainActivityView.class));
@@ -155,6 +172,61 @@ public class ScreenSlideActivity extends FragmentActivity
                 // will do nothing.
                 mPager.setCurrentItem(mPager.getCurrentItem() + 1);
                 return true;
+
+			case R.id.action_sort:
+
+				final String[] items = RelacionEstadisticas.getRelacion().get(posicionActual).getTitulosCols(); 
+				// mostramos dialogo para elegir campo
+				AlertDialog.Builder dialogo = new AlertDialog.Builder(cntx);
+				dialogo.setTitle(getString(R.string.select_field));
+				dialogo.setItems(items, 
+					new DialogInterface.OnClickListener()
+					{
+						public void onClick(DialogInterface p1, int p2)
+						{
+							RelacionEstadisticas.getRelacion().get(posicionActual ).setCamposOrden("c"+p2);
+							p1.dismiss();
+							
+							// mostramos dialogo para elegir orden
+							final String[] items2 = new String[]{getString(R.string.order_asc), getString(R.string.order_desc)};
+							AlertDialog.Builder dialogo2 = new AlertDialog.Builder(cntx);
+							dialogo2.setTitle(getString(R.string.select_sortorder));
+							dialogo2.setItems(items2, 
+								new DialogInterface.OnClickListener()
+								{
+									public void onClick(DialogInterface p1, int p2)
+									{
+										String tmp = RelacionEstadisticas.getRelacion().get(posicionActual).getCamposOrden();
+										if (p2==0) //ASC
+										{
+											tmp+=" asc ";
+										}
+										else
+										{
+											tmp+= " desc ";
+										}
+										RelacionEstadisticas.getRelacion().get(posicionActual ).setCamposOrden(tmp);
+										p1.dismiss();
+
+										mPager.setAdapter(mPagerAdapter);										
+										//mPager.setCurrentItem(0, true);
+										mPager.setCurrentItem(posicionActual, true);
+										//Toast.makeText(cntx, RelacionEstadisticas.getRelacion().get(mPager.getCurrentItem() ).getConsultaSQL(), Toast.LENGTH_LONG).show();
+									}
+
+								});
+
+							dialogo2.create().show();
+							
+						}
+
+					});
+
+				dialogo.create().show();
+
+				
+                                return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -184,4 +256,9 @@ public class ScreenSlideActivity extends FragmentActivity
             return NUM_PAGES;
         }
     }
+	
+	private void setPosicionActual(int pos)
+	{
+		posicionActual=pos;
+	}
 }

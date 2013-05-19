@@ -70,6 +70,8 @@ public class ScreenSlidePageFragment extends Fragment {
 			
 			//webView.loadData(html, "text/html", "UTF-8");
 			webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);			
+			
+			//Toast.makeText(Utilidades.getAppContext(), "sql: " + RelacionEstadisticas.getRelacion().get(idEstadistica).getConsultaSQL(), Toast.LENGTH_LONG).show();
 		}
 		catch (Exception e)
 		{

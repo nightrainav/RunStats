@@ -29,7 +29,7 @@ public class RelacionEstadisticas
 
 			una.setTitulo("Total");
 			una.setDescripcion("Datos globales de sesiones");
-			una.setConsultaSQL("select count(_ID), sum(distance), sum (runtime), sum (calories) from session ");
+			una.setConsultaSQL("select count(_ID) as c0, sum(distance) as c1, sum (runtime) as c2, sum (calories) as c3 from session ");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
@@ -52,8 +52,8 @@ public class RelacionEstadisticas
 
 			una.setTitulo("Por tipo de deporte");
 			una.setDescripcion("Datos globales de sesiones por tipo de deporte");
-			una.setConsultaSQL(" select sportType, count(_ID), sum(distance) , avg(distance)," +
-							   "sum(runtime), avg(runtime), sum(calories), avg (calories) from session group by sportType");
+			una.setConsultaSQL(" select sportType as c0, count(_ID) as c1, sum(distance) as c2, avg(distance) as c3," +
+							   "sum(runtime) as c4, avg(runtime) as c5, sum(calories) as c6, avg (calories) as c7 from session group by sportType order by c0");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero_sportType,
@@ -80,8 +80,8 @@ public class RelacionEstadisticas
 
 			una.setTitulo("Por años");
 			una.setDescripcion("Datos globales de sesiones por años");
-			una.setConsultaSQL("select year, count(_ID), sum(distance), avg(distance)," +
-							   "sum(runtime), avg(runtime), sum(calories), avg (calories) from session group by year order by year desc");
+			una.setConsultaSQL("select year as c0, count(_ID) as c1, sum(distance) as c2, avg(distance) as c3, " +
+							   "sum(runtime) as c4, avg(runtime) as c5, sum(calories) as c6, avg (calories) as c7 from session group by year order by c0 desc");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
@@ -109,8 +109,8 @@ public class RelacionEstadisticas
 
 			una.setTitulo("Por años y tipo de deporte");
 			una.setDescripcion("Datos globales de sesiones por años y tipo de deporte");
-			una.setConsultaSQL("select year, sportType, count(_ID), sum(distance), avg(distance)," +
-							   "sum(runtime), avg(runtime), sum(calories), avg (calories) from session group by year, sportType order by year desc");
+			una.setConsultaSQL("select year as c0, sportType as c1, count(_ID) as c2, sum(distance) as c3, avg(distance) as c4," +
+							   "sum(runtime) as c5, avg(runtime) as c6, sum(calories) as c7, avg (calories) as c8 from session group by year, sportType order by c0 desc");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
@@ -139,8 +139,8 @@ public class RelacionEstadisticas
 
 			una.setTitulo("Por meses");
 			una.setDescripcion("Datos globales de sesiones por meses");
-			una.setConsultaSQL("select year, month, count(_ID), sum(distance), avg(distance)," +
-							   "sum(runtime), avg(runtime), sum(calories), avg (calories) from session group by year, month order by year desc, month desc ");
+			una.setConsultaSQL("select year as c0, month as c1, count(_ID) as c2, sum(distance) as c3, avg(distance) as c4," +
+							   "sum(runtime) as c5, avg(runtime) as c6, sum(calories) as c7, avg (calories) as c8 from session group by year, month order by c0 desc, c1 desc ");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
@@ -169,8 +169,8 @@ public class RelacionEstadisticas
 
 			una.setTitulo("Por meses y tipo de deporte");
 			una.setDescripcion("Datos globales de sesiones por meses y tipo de deporte");
-			una.setConsultaSQL("select year, month, sportType, count(_ID), sum(distance), avg(distance)," +
-							   "sum(runtime), avg(runtime), sum(calories), avg (calories) from session group by year, month, sportType order by year desc, month desc ");
+			una.setConsultaSQL("select year as c0, month as c1, sportType as c2, count(_ID) as c3, sum(distance) as c4, avg(distance) as c5," +
+							   "sum(runtime) as c6, avg(runtime) as c7, sum(calories) as c8, avg (calories) as c9 from session group by year, month, sportType order by c0, c1 desc ");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
@@ -199,8 +199,8 @@ public class RelacionEstadisticas
 
 			una.setTitulo("Calorías por tipo de deporte");
 			una.setDescripcion("Consumo de calorías por tipo de deporte");
-			una.setConsultaSQL("select sportType, count(_ID), avg(calories) , sum(calories)/(sum(distance)/1000)," +
-							   "sum(calories)/(sum(runtime)/1000/60/60)  from session group by sportType");
+			una.setConsultaSQL("select sportType as c0, count(_ID) as c1, avg(calories) as c2, sum(calories)/(sum(distance)/1000) as c3," +
+							   "sum(calories)/(sum(runtime)/1000/60/60) as c4 from session group by c0 ");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero_sportType,
@@ -225,8 +225,8 @@ public class RelacionEstadisticas
 
 			una.setTitulo("Relación completa");
 			una.setDescripcion("Relación completa de sesiones");
-			una.setConsultaSQL("select year, month, startTime as c2, startTime, endTime, sportType, distance," +
-							   "runtime, calories from session order by c2 desc ");
+			una.setConsultaSQL("select year as c0, month as c1, startTime as c2, startTime as c3, endTime as c4, sportType as c5, distance as c6," +
+							   "runtime as c7, calories as c8 from session order by c2 desc ");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,

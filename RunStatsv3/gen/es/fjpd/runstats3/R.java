@@ -17,6 +17,7 @@ public final class R {
         public static final int LblSubTitulo=0x7f040004;
         public static final int LblTitulo=0x7f040003;
         public static final int LstOpciones=0x7f040005;
+        public static final int action_back=0x7f04000a;
         public static final int action_exit=0x7f040007;
         /** 
         These action bar item IDs (menu item IDs) are defined here for
@@ -28,6 +29,7 @@ public final class R {
          */
         public static final int action_next=0x7f040000;
         public static final int action_previous=0x7f040008;
+        public static final int action_sort=0x7f040009;
         public static final int layout_test=0x7f040001;
         public static final int pager=0x7f040006;
         public static final int webView1=0x7f040002;
@@ -43,15 +45,20 @@ public final class R {
         public static final int menu_screen_slide=0x7f070001;
     }
     public static final class string {
-        public static final int action_back=0x7f050004;
-        public static final int action_exit=0x7f050003;
-        public static final int action_next=0x7f050002;
+        public static final int action_back=0x7f050008;
+        public static final int action_exit=0x7f050007;
+        public static final int action_next=0x7f050006;
         /**  Actions 
          */
-        public static final int action_previous=0x7f050001;
+        public static final int action_previous=0x7f050005;
+        public static final int action_sort=0x7f050009;
         /**  Titles 
          */
         public static final int app_name=0x7f050000;
+        public static final int order_asc=0x7f050003;
+        public static final int order_desc=0x7f050004;
+        public static final int select_field=0x7f050001;
+        public static final int select_sortorder=0x7f050002;
     }
     public static final class style {
         public static final int Theme_Personalizado=0x7f060000;

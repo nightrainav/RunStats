@@ -5,4 +5,14 @@
         android:title="@string/action_previous"
         android:showAsAction="ifRoom|withText" />
 
+	<item android:id="@+id/action_sort"
+        android:title="@string/action_sort"
+        android:showAsAction="never"
+		/>
+	
+
+	<item android:id="@+id/action_back"
+        android:title="@string/action_back"
+        android:showAsAction="never"
+	/>
 </menu>

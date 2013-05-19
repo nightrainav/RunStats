@@ -12,6 +12,7 @@ public class Estadistica {
     // Títulos que queremos para las columnas
     String[] titulosCols;
 
+
     // Tipos de datos para las columnas
     // El tipo especial Entero_sportType se usa para identificar esta columna
     // y poder convertirla a su nombre, ya que no están en tabla
@@ -19,6 +20,10 @@ public class Estadistica {
     // Tipos de las columnas
     Tipo_Columna[] tiposCols;
 
+	// de momento solo vamos a permitir order por un campo
+	// esta variable tendra la forma "c1 asc"
+	String camposOrden = null;
+	
     public Estadistica()
     {
 
@@ -80,6 +85,7 @@ public class Estadistica {
 
     public void setConsultaSQL(String consultaSQL) {
 		this.consultaSQL = consultaSQL;
+		transformaSQLConCamposOrden();
     }
 
     public String getTitulo() {
@@ -107,6 +113,31 @@ public class Estadistica {
     public void setTiposCols(Tipo_Columna[] tiposCols) {
 		this.tiposCols = tiposCols;
     }
+	
+
+	public void setCamposOrden(String camposOrden)
+	{
+		this.camposOrden = camposOrden;
+		transformaSQLConCamposOrden();
+	}
+
+	public String getCamposOrden()
+	{
+		return camposOrden;
+	}
+	
+	private void transformaSQLConCamposOrden()
+	{
+		if (camposOrden!=null && !consultaSQL.equals(""))
+		{
+			int posOrderBy=consultaSQL.indexOf("order by");
+			if (posOrderBy==-1) posOrderBy=consultaSQL.length();
+			consultaSQL=consultaSQL.substring(0, posOrderBy);
+			consultaSQL+=" order by "+camposOrden;
+		}
+		
+	}
+	
 }
 
 
