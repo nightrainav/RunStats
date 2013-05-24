@@ -1,18 +1,69 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Adds an item to the list. -->
-    <item android:id="@+id/action_previous"
-        android:title="@string/action_previous"
-        android:showAsAction="ifRoom|withText" />
-
-	<item android:id="@+id/action_sort"
+	
+	
+	<item android:id="@+id/action_filters"
+		android:title="@string/action_filter"
+		android:icon="@drawable/ic_action_search"
+		android:showAsAction="ifRoom" >
+	
+		<menu>
+			
+			<item android:id="@+id/action_addfilter"
+				android:title="@string/action_addfilter"
+				android:icon="@drawable/ic_action_new"
+				android:showAsAction="ifRoom" />
+			
+			<item android:id="@+id/action_discardfilter"
+				android:title="@string/action_nofilter"
+				android:icon="@drawable/ic_action_discard"
+				android:showAsAction="ifRoom" />
+			
+			<item android:id="@+id/action_infofilter"
+				android:title="@string/action_info"
+				android:icon="@drawable/ic_action_info"
+				android:showAsAction="ifRoom" />
+		</menu>
+	</item>
+	
+	<item android:id="@+id/action_sorting"
         android:title="@string/action_sort"
-        android:showAsAction="never"
-		/>
+        android:icon="@drawable/ic_action_import_export"
+        android:showAsAction="ifRoom" >
+	
+		<menu>
+
+			<item android:id="@+id/action_addsort"
+				android:title="@string/action_addsort"
+				android:icon="@drawable/ic_action_new"
+				android:showAsAction="ifRoom" />
+
+			<item android:id="@+id/action_discardsort"
+				android:title="@string/action_nosort"
+				android:icon="@drawable/ic_action_discard"
+				android:showAsAction="ifRoom" />
+
+			<item android:id="@+id/action_infosort"
+				android:title="@string/action_info"
+				android:icon="@drawable/ic_action_info"
+				android:showAsAction="ifRoom" />
+		</menu>
+	</item>
 	
 
+    <item android:id="@+id/action_previous"
+        android:title="@string/action_previous"
+		android:icon="@drawable/ic_action_previous_item"
+        android:showAsAction="ifRoom" />
+
+	<item android:id="@+id/action_next"
+        android:title="@string/action_next"
+        android:icon="@drawable/ic_action_next_item"
+        android:showAsAction="ifRoom" />
+	
 	<item android:id="@+id/action_back"
         android:title="@string/action_back"
-        android:showAsAction="never"
-	/>
+		android:icon="@drawable/ic_home"
+        android:showAsAction="ifRoom" />
+	
 </menu>

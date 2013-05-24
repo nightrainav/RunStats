@@ -68,19 +68,15 @@ public class ScreenSlidePageFragment extends Fragment {
 			WebView webView = (WebView) rootView.findViewById(R.id.webView1);
 			webView.getSettings().setJavaScriptEnabled(true);
 			
-			//webView.loadData(html, "text/html", "UTF-8");
 			webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);			
 			
 			//Toast.makeText(Utilidades.getAppContext(), "sql: " + RelacionEstadisticas.getRelacion().get(idEstadistica).getConsultaSQL(), Toast.LENGTH_LONG).show();
 		}
 		catch (Exception e)
 		{
-			Toast.makeText(Utilidades.getAppContext(), "error: " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+			Toast.makeText(RunStats.getAppContext(), "error: " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
 			Log.e("ERROR", e.getLocalizedMessage());
 		}
-        // Set the title view to show the page number.
-        /*((TextView) rootView.findViewById(android.R.id.text1)).setText(
-                getString(R.string.title_template_step, mPageNumber + 1));*/
 
         return rootView;
     }

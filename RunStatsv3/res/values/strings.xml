@@ -1,19 +1,95 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Titles -->
-    <string name="app_name">RunStats v2</string>
-
+    <string name="app_name">RunStats v3.0</string>
+	<string name="app_title">"Estadisticas de Runtastic"</string>
 	<string name="select_field">Elija un campo</string>
 	<string name="select_sortorder">Elija un orden</string>
+	<string name="select_value">Elija un valor</string>
+	<string name="filter_applied">Filtros aplicados</string>
+	<string name="sort_applied">Ordenaciones aplicadas</string>
+	<string name="filter">Filtro</string>
+	<string name="order">Ordenación</string>
+	<string name="select_stat">"Seleccione una estadística"</string>
 	
 	<string name="order_asc">Ascendente</string>
 	<string name="order_desc">Descendente</string>
+	
+	<!-- Messages -->
+	<string name="db_not_found">No se ha encontrado la Base de Datos de Runtastic en la SD. Cambie la ubicacion en Runtastic (Opciones generales / Ubicacion de datos)</string>
 	
     <!-- Actions -->
     <string name="action_previous">Anterior</string>
     <string name="action_next">Siguiente</string>
 	<string name="action_exit">Salir</string>
 	<string name="action_back">Volver</string>
-	<string name="action_sort">Ordenar</string>
+	<string name="action_sort">Ordenación</string>
+	<string name="action_filter">Filtros</string>
+
+	<string name="action_addsort">Añadir ordenación</string>
+	<string name="action_addfilter">Añadir filtro</string>
+	<string name="action_nosort">Descartar ordenación</string>
+	<string name="action_nofilter">Descartar filtros</string>  
+	<string name="action_info">Información</string>  
 	
+	<!-- Meses -->
+	<string name="mes_enero">Enero</string>
+	<string name="mes_febrero">Febrero</string>
+	<string name="mes_marzo">Marzo</string>
+	<string name="mes_abril">Abril</string>
+	<string name="mes_mayo">Mayo</string>
+	<string name="mes_junio">Junio</string>
+	<string name="mes_julio">Julio</string>
+	<string name="mes_agosto">Agosto</string>
+	<string name="mes_septiembre">Septiembre</string>
+	<string name="mes_octubre">Octubre</string>
+	<string name="mes_noviembre">Noviembre</string>
+	<string name="mes_diciembre">Diciembre</string>
+	
+	<!-- Tipos de deporte -->
+	<string name="tipod_andar">Andar</string>
+	<string name="tipod_correr">Correr</string>
+	<string name="tipod_senderismo">Senderismo</string>
+	<string name="tipod_mtb">Ciclismo de montaña</string>
+	
+	<!-- Columnas -->
+	<string name="col_sesiones">Sesiones</string>
+	<string name="col_distancia">Distancia</string>
+	<string name="col_calorias">Calorías</string>
+	<string name="col_tiempo">Tiempo</string>
+	<string name="col_tipodeporte">Tipo deporte</string>
+	<string name="col_kmtotal">Km total</string>
+	<string name="col_kmmedia">Km media</string>
+	<string name="col_tiempototal">Tiempo total</string>
+	<string name="col_tiempomedio">Tiempo medio</string>
+	<string name="col_caloriastotal">Calorías total</string>
+	<string name="col_caloriasmedia">Calorías media</string>
+	<string name="col_caloriaskm">Calorías/Km</string>
+	<string name="col_caloriashora">Calorías/Hora</string>
+	<string name="col_anio">Año</string>
+	<string name="col_mes">Mes</string>
+	<string name="col_dia">Día</string>
+	<string name="col_inicio">Inicio</string>
+	<string name="col_fin">Fin</string>
+	
+	<!-- Titulos de estadisticas -->
+	<string name="titulo_est_total">Total</string>
+	<string name="titulo_est_portipodeporte">Por tipo de deporte</string>
+	<string name="titulo_est_poranios">Por años</string>
+	<string name="titulo_est_poraniostipodeporte">Por años y tipo de deporte</string>
+	<string name="titulo_est_pormeses">Por meses</string>
+	<string name="titulo_est_pormesestipodeporte">Por meses y tipo de deporte</string>
+	<string name="titulo_est_caloriastipodeporte">Calorías por tipo de deporte</string>
+	<string name="titulo_est_relacioncompleta">Relación completa</string>
+	
+	<!-- Descripciones de estadisticas -->
+	<string name="desc_est_total">Datos globales de sesiones</string>
+	<string name="desc_est_portipodeporte">Datos globales de sesiones por tipo de deporte</string>
+	<string name="desc_est_poranios">Datos globales de sesiones por años</string>
+	<string name="desc_est_poraniostipodeporte">Datos globales de sesiones por años y tipo de deporte</string>
+	<string name="desc_est_pormeses">Datos globales de sesiones por por meses</string>
+	<string name="desc_est_pormesestipodeporte">Datos globales de sesiones por por meses y tipo de deporte</string>
+	<string name="desc_est_caloriastipodeporte">Consumo de calorías por tipo de deporte</string>
+	<string name="desc_est_relacioncompleta">Relación completa de sesiones</string>
+		
 </resources>

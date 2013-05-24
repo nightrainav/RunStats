@@ -6,7 +6,7 @@ import android.os.*;
 import android.view.*;
 import android.webkit.*;
 import android.widget.*;
-import es.fjpd.runstats3.*;
+import es.fjpd.runstats3.*;  
 import es.fjpd.runstats3.logica.*;
 
 // Obsoleta - Sustituida por ScreenSlideActivity

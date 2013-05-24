@@ -14,17 +14,15 @@ import java.util.*;
 public class MainActivityView extends Activity
 {
 
-	private ArrayList<Estadistica> datos = RelacionEstadisticas.getRelacion();
-    private String fakeDatos[] = RelacionEstadisticas.getTitulos();
+	private ArrayList<Estadistica> datos = RelacionEstadisticas.getRelacion();;
+    private String fakeDatos[] = RelacionEstadisticas.getTitulos(MainActivityView.this);
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
     	super.onCreate(savedInstanceState);
-    	setContentView(R.layout.main);
-
-		// inicializamos una variable estatica con el contexto
-		Utilidades.setAppContext(MainActivityView.this);
+    	
+		setContentView(R.layout.main);
 
 		// si no es tablet forzamos orientacion apaisada
 		/*if (!Utilidades.isTablet())
@@ -34,22 +32,19 @@ public class MainActivityView extends Activity
 		if (Build.VERSION.RELEASE.startsWith("4"))
 		{
 			ActionBar actBar = getActionBar();
-			actBar.setTitle("Estadisticas de Runtastic");
-			actBar.setSubtitle("Seleccione una estadística");
+			actBar.setTitle(RunStats.getAppContext().getString(R.string.app_title));
+			actBar.setSubtitle(RunStats.getAppContext().getString(R.string.select_stat));
 		}
-
-    	AdaptadorRelEstadisticas adaptador =
-			new AdaptadorRelEstadisticas(this);
+	 	AdaptadorRelEstadisticas adaptador = new AdaptadorRelEstadisticas(MainActivityView.this, RelacionEstadisticas.getTitulos(MainActivityView.this) );
 
     	ListView lstOpciones = (ListView)findViewById(R.id.LstOpciones);
 
-    	lstOpciones.setAdapter(adaptador);
+    	lstOpciones.setAdapter(adaptador); 
 
-		//	lstOpciones.setOnItemClickListener( new AdapterView.OnItemClickListener());
 
 		if (BaseDatos.getRutaBD().equals(""))
 		{
-			Toast.makeText(MainActivityView.this, "No se ha encontrado la Base de Datos de Runtastic en la SD. Cambie la ubicacion en Runtastic (Opciones generales / Ubicacion de datos)", Toast.LENGTH_LONG).show();
+			Toast.makeText(MainActivityView.this, RunStats.getAppContext().getString(R.string.db_not_found) , Toast.LENGTH_LONG).show();
 		}
 		else
 		{ 
@@ -63,14 +58,9 @@ public class MainActivityView extends Activity
 					// Acciones necesarias al hacer click
 					// debemos crear una instancia de la vista de estadísticas pasandole el ID (posicion) de la opción seleccionada
 					// excepto para a ultima opcion que es salir SOLO EN VERSION 1
-					if ((position == datos.size() - 1) && (Utilidades.getVersion().equals("1")))
-					{
-						//BaseDatos.cerrar();
-						finish();
-					}
 					
 					// si no hemos encontrado la bd no asociamos codigo al click 
-					else if (!BaseDatos.getRutaBD().equals(""))
+					if (!BaseDatos.getRutaBD().equals(""))
 					{
 						Intent intent = new Intent(MainActivityView.this, ScreenSlideActivity.class);
 
@@ -81,7 +71,6 @@ public class MainActivityView extends Activity
 						try
 						{
 							startActivity(intent);
-							Log.d("DEBUG", "Lanzada actividad");
 						}
 						catch (Exception e)
 						{
@@ -89,18 +78,6 @@ public class MainActivityView extends Activity
 							Log.e("ERROR", e.getLocalizedMessage());
 						}
 
-						/*Intent intent = new Intent(MainActivityView.this, EstadisticaHTMLView.class);
-						 Bundle bundle = new Bundle();
-						 bundle.putInt("ID_ESTADISTICA", position);
-						 intent.putExtras(bundle);
-						 try
-						 {
-						 startActivity(intent);
-						 }
-						 catch (Exception e)
-						 {
-						 Toast.makeText(MainActivityView.this, "error: " + e.getLocalizedMessage(), Toast.LENGTH_LONG);
-						 }*/
 					}
 
 				}
@@ -117,9 +94,9 @@ public class MainActivityView extends Activity
 
 		Activity context;
 
-		AdaptadorRelEstadisticas(Activity context)
+		AdaptadorRelEstadisticas(Activity context, String[] data)
 		{
-			super(context, R.layout.listitem_relestadisticas, fakeDatos);
+			super(context, R.layout.listitem_relestadisticas, data);
 			this.context = context;
 		}
 
@@ -133,17 +110,6 @@ public class MainActivityView extends Activity
 
 			TextView lblSubtitulo = (TextView)item.findViewById(R.id.LblSubTitulo);
 			lblSubtitulo.setText(datos.get(position).getDescripcion());
-
-			// en version 1 la ultima entrada del listview es una opcion salir
-			// y la pintamos de otro color
-			if (Utilidades.getVersion().equals("1"))
-			{
-				if (position == datos.size() - 1)
-				{
-					lblTitulo.setTextColor(Color.MAGENTA);
-					lblSubtitulo.setTextColor(Color.MAGENTA);
-				}
-			}
 
 			return(item);
 		}

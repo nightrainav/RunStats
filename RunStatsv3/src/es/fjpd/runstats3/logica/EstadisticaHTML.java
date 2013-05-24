@@ -187,7 +187,7 @@ public class EstadisticaHTML
 							{
 								try
 								{
-									datoPintar = getSportType(cursor.getLong(index));
+									datoPintar = Utilidades.getSportType(cursor.getLong(index));
 									claseCelda = "";
 								}
 								catch (SQLException e)
@@ -200,7 +200,7 @@ public class EstadisticaHTML
 							{
 								try
 								{
-									datoPintar = getNombreMes(cursor.getLong(index));
+									datoPintar = Utilidades.getNombreMes(cursor.getLong(index));
 									claseCelda = "";
 								}
 								catch (SQLException e)
@@ -345,56 +345,6 @@ public class EstadisticaHTML
 		return resultado;
     }
 
-	// MODIFICADO
-    private String getSportType(long valor)
-    {
-		if (valor == 0)
-		{ return "Desconocido"; }
-		else if (valor == 1)
-		{ return "Correr"; }
-		else if (valor == 19)
-		{ return "Andar"; }
-		else if (valor == 7)
-		{ return "Senderismo"; }
-		else if (valor == 4)
-		{ return "Ciclismo de monta&ntilde;a"; }
-		else
-		{ return valor + " ¿? "; }
-    }
-
-
-    // NUEVO
-    private String getNombreMes(long valor)
-    {
-		
-		if (valor == 1)
-		{ return "Enero"; }
-		else if (valor == 2)
-		{ return "Febrero"; }
-		else if (valor == 3)
-		{ return "Marzo"; }
-		else if (valor == 4)
-		{ return "Abril"; }
-		else if (valor == 5)
-		{ return "Mayo"; }
-		else if (valor == 6)
-		{ return "Junio"; }
-		else if (valor == 7)
-		{ return "Julio"; }
-		else if (valor == 8)
-		{ return "Agosto"; }
-		else if (valor == 9)
-		{ return "Septiembre"; }
-		else if (valor == 10)
-		{ return "Octubre"; }
-		else if (valor == 11)
-		{ return "Noviembre"; }
-		else if (valor == 12)
-		{ return "Diciembre"; }
-		else
-		{ return " mes incorrecto "; }
-    }
-
     // NUEVO
     private String getMilisegundosFormateados(long ms)
     {
@@ -423,7 +373,7 @@ public class EstadisticaHTML
     {
 		String resultado = "";
 
-		resultado = DateUtils.formatDateTime(Utilidades.getAppContext(),ms,DateUtils.FORMAT_SHOW_TIME);
+		resultado = DateUtils.formatDateTime(RunStats.getAppContext(),ms,DateUtils.FORMAT_SHOW_TIME);
 		
 		return resultado;
 
@@ -434,7 +384,7 @@ public class EstadisticaHTML
     {
 		String resultado = "";
 
-		resultado = DateUtils.formatDateTime(Utilidades.getAppContext(),ms,DateUtils.FORMAT_SHOW_DATE).substring(0,2).trim();
+		resultado = DateUtils.formatDateTime(RunStats.getAppContext(),ms,DateUtils.FORMAT_SHOW_DATE).substring(0,2).trim();
 		
 		return resultado;
 

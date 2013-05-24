@@ -1,8 +1,9 @@
 package es.fjpd.runstats3.logica;
 
-import java.util.ArrayList;
-
+import android.content.*;
+import es.fjpd.runstats3.*;
 import es.fjpd.runstats3.logica.Estadistica.*;
+import java.util.*;
 
 
 public class RelacionEstadisticas
@@ -11,11 +12,14 @@ public class RelacionEstadisticas
     private static ArrayList<Estadistica> relacion = null;
 
     private static String[] titulos = null;
+	
+	private static Context cntx=null;
 
     public static ArrayList<Estadistica> getRelacion()
 	{
 
-
+		cntx = RunStats.getAppContext();
+		
 		if (relacion == null)
 		{
 			Estadistica una = null;
@@ -27,9 +31,9 @@ public class RelacionEstadisticas
 			/*************************************/
 			una = new Estadistica();
 
-			una.setTitulo("Total");
-			una.setDescripcion("Datos globales de sesiones");
-			una.setConsultaSQL("select count(_ID) as c0, sum(distance) as c1, sum (runtime) as c2, sum (calories) as c3 from session ");
+			una.setTitulo(cntx.getString(R.string.titulo_est_total));
+			una.setDescripcion(cntx.getString(R.string.desc_est_total));
+			una.setConsultaSQL("select count(_ID) as c0, sum(distance) as c1, sum (runtime) as c2, sum (calories) as c3 from session where 1=1 ");
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
@@ -38,9 +42,12 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Sesiones", "Distancia", "Tiempo", "Calorías"});
+			una.setTitulosCols(new String[] {cntx.getString(R.string.col_sesiones), cntx.getString(R.string.col_distancia), 
+							  			     cntx.getString(R.string.col_tiempo), cntx.getString(R.string.col_calorias)});
+			una.setColumnasFiltro(null);
+			una.estableceConsultaOriginal();
 
-			relacion.add(una);
+			relacion.add(una);  
 			/*************************************/
 			/**** Fin elemento de la lista ****/
 			/*************************************/
@@ -50,11 +57,14 @@ public class RelacionEstadisticas
 			/*************************************/
 			una = new Estadistica();
 
-			una.setTitulo("Por tipo de deporte");
-			una.setDescripcion("Datos globales de sesiones por tipo de deporte");
+			una.setTitulo(cntx.getString(R.string.titulo_est_portipodeporte) );
+			una.setDescripcion(cntx.getString(R.string.desc_est_portipodeporte));
 			una.setConsultaSQL(" select sportType as c0, count(_ID) as c1, sum(distance) as c2, avg(distance) as c3," +
-							   "sum(runtime) as c4, avg(runtime) as c5, sum(calories) as c6, avg (calories) as c7 from session group by sportType order by c0");
-
+							   "sum(runtime) as c4, avg(runtime) as c5, sum(calories) as c6, avg (calories) as c7 from session where 1=1 group by sportType "); // order by c0");
+			una.setCamposOrden(" c0 desc ");
+			una.estableceConsultaOriginal();
+			una.setCamposOrden(null);
+							   
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero_sportType,
 								 Tipo_Columna.TC_Entero,    
@@ -66,8 +76,11 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Tipo deporte", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
-
+			una.setTitulosCols(new String[] {cntx.getString(R.string.col_tipodeporte), cntx.getString(R.string.col_sesiones), cntx.getString(R.string.col_kmtotal),
+								   			 cntx.getString(R.string.col_kmmedia), cntx.getString(R.string.col_tiempototal), cntx.getString(R.string.col_tiempomedio), 
+								   			 cntx.getString(R.string.col_caloriastotal), cntx.getString(R.string.col_caloriasmedia)});
+			una.setColumnasFiltro(new String[] {cntx.getString(R.string.col_tipodeporte)});
+			
 			relacion.add(una);
 			/*************************************/
 			/**** Fin elemento de la lista ****/
@@ -78,11 +91,14 @@ public class RelacionEstadisticas
 			/*************************************/
 			una = new Estadistica();
 
-			una.setTitulo("Por años");
-			una.setDescripcion("Datos globales de sesiones por años");
+			una.setTitulo(cntx.getString(R.string.titulo_est_poranios));
+			una.setDescripcion(cntx.getString(R.string.desc_est_poranios));
 			una.setConsultaSQL("select year as c0, count(_ID) as c1, sum(distance) as c2, avg(distance) as c3, " +
-							   "sum(runtime) as c4, avg(runtime) as c5, sum(calories) as c6, avg (calories) as c7 from session group by year order by c0 desc");
-
+							   "sum(runtime) as c4, avg(runtime) as c5, sum(calories) as c6, avg (calories) as c7 from session where 1=1 group by year "); //order by c0 desc");
+			una.setCamposOrden(" c0 desc ");
+			una.estableceConsultaOriginal();
+			una.setCamposOrden(null);
+			
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
 								 Tipo_Columna.TC_Entero,    
@@ -94,8 +110,12 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
-
+			una.setTitulosCols(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_sesiones), cntx.getString(R.string.col_kmtotal),
+								   cntx.getString(R.string.col_kmmedia), cntx.getString(R.string.col_tiempototal), cntx.getString(R.string.col_tiempomedio), 
+								   cntx.getString(R.string.col_caloriastotal), cntx.getString(R.string.col_caloriasmedia)});
+			
+			una.setColumnasFiltro(new String[] {cntx.getString(R.string.col_anio)});
+			
 			relacion.add(una);
 			/*************************************/
 			/**** Fin elemento de la lista ****/
@@ -107,11 +127,14 @@ public class RelacionEstadisticas
 			/*************************************/
 			una = new Estadistica();
 
-			una.setTitulo("Por años y tipo de deporte");
-			una.setDescripcion("Datos globales de sesiones por años y tipo de deporte");
+			una.setTitulo(cntx.getString(R.string.titulo_est_poraniostipodeporte));
+			una.setDescripcion(cntx.getString(R.string.desc_est_poraniostipodeporte));
 			una.setConsultaSQL("select year as c0, sportType as c1, count(_ID) as c2, sum(distance) as c3, avg(distance) as c4," +
-							   "sum(runtime) as c5, avg(runtime) as c6, sum(calories) as c7, avg (calories) as c8 from session group by year, sportType order by c0 desc");
-
+							   "sum(runtime) as c5, avg(runtime) as c6, sum(calories) as c7, avg (calories) as c8 from session where 1=1 group by year, sportType "); //order by c0 desc");
+			una.setCamposOrden(" c0 desc ");
+			una.estableceConsultaOriginal();
+			una.setCamposOrden(null);
+			
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
 								 Tipo_Columna.TC_Entero_sportType,
@@ -124,8 +147,12 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Tipo deporte", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
 
+			una.setTitulosCols(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_tipodeporte), cntx.getString(R.string.col_sesiones), cntx.getString(R.string.col_kmtotal),
+								   cntx.getString(R.string.col_kmmedia), cntx.getString(R.string.col_tiempototal), cntx.getString(R.string.col_tiempomedio), 
+								   cntx.getString(R.string.col_caloriastotal), cntx.getString(R.string.col_caloriasmedia)});
+			una.setColumnasFiltro(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_tipodeporte)});
+			
 			relacion.add(una);
 			/*************************************/
 			/**** Fin elemento de la lista ****/
@@ -137,10 +164,13 @@ public class RelacionEstadisticas
 			/*************************************/
 			una = new Estadistica();
 
-			una.setTitulo("Por meses");
-			una.setDescripcion("Datos globales de sesiones por meses");
+			una.setTitulo(cntx.getString(R.string.titulo_est_pormeses));
+			una.setDescripcion(cntx.getString(R.string.desc_est_pormeses));
 			una.setConsultaSQL("select year as c0, month as c1, count(_ID) as c2, sum(distance) as c3, avg(distance) as c4," +
-							   "sum(runtime) as c5, avg(runtime) as c6, sum(calories) as c7, avg (calories) as c8 from session group by year, month order by c0 desc, c1 desc ");
+							   "sum(runtime) as c5, avg(runtime) as c6, sum(calories) as c7, avg (calories) as c8 from session where 1=1 group by year, month "); //order by c0 desc, c1 desc ");
+			una.setCamposOrden(" c0 desc, c1 desc ");
+			una.estableceConsultaOriginal();
+			una.setCamposOrden(null);
 
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
@@ -154,8 +184,12 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Mes", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
-
+			una.setTitulosCols(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_mes), cntx.getString(R.string.col_sesiones), cntx.getString(R.string.col_kmtotal),
+								   cntx.getString(R.string.col_kmmedia), cntx.getString(R.string.col_tiempototal), cntx.getString(R.string.col_tiempomedio), 
+								   cntx.getString(R.string.col_caloriastotal), cntx.getString(R.string.col_caloriasmedia)});
+			
+			una.setColumnasFiltro(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_mes)});
+			
 			relacion.add(una);
 			/*************************************/
 			/**** Fin elemento de la lista ****/
@@ -167,11 +201,14 @@ public class RelacionEstadisticas
 			/*************************************/
 			una = new Estadistica();
 
-			una.setTitulo("Por meses y tipo de deporte");
-			una.setDescripcion("Datos globales de sesiones por meses y tipo de deporte");
+			una.setTitulo(cntx.getString(R.string.titulo_est_pormesestipodeporte));
+			una.setDescripcion(cntx.getString(R.string.desc_est_pormesestipodeporte));
 			una.setConsultaSQL("select year as c0, month as c1, sportType as c2, count(_ID) as c3, sum(distance) as c4, avg(distance) as c5," +
-							   "sum(runtime) as c6, avg(runtime) as c7, sum(calories) as c8, avg (calories) as c9 from session group by year, month, sportType order by c0, c1 desc ");
-
+							   "sum(runtime) as c6, avg(runtime) as c7, sum(calories) as c8, avg (calories) as c9 from session where 1=1 group by year, month, sportType ");// order by c0, c1 desc ");
+			una.setCamposOrden(" c0 desc, c1 desc ");
+			una.estableceConsultaOriginal();
+			una.setCamposOrden(null);
+			
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
 								 Tipo_Columna.TC_Entero_Mes,
@@ -185,8 +222,12 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Mes", "Tipo deporte", "Sesiones", "Km total", "Km media", "Tiempo total", "Tiempo medio", "Calorías total", "Calorías media"});
-
+			una.setTitulosCols(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_mes), cntx.getString(R.string.col_tipodeporte), cntx.getString(R.string.col_sesiones), cntx.getString(R.string.col_kmtotal),
+								   cntx.getString(R.string.col_kmmedia), cntx.getString(R.string.col_tiempototal), cntx.getString(R.string.col_tiempomedio), 
+								   cntx.getString(R.string.col_caloriastotal), cntx.getString(R.string.col_caloriasmedia)});
+			
+			una.setColumnasFiltro(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_mes), cntx.getString(R.string.col_tipodeporte)});
+			
 			relacion.add(una);
 			/*************************************/
 			/**** Fin elemento de la lista ****/
@@ -197,11 +238,14 @@ public class RelacionEstadisticas
 			/*************************************/
 			una = new Estadistica();
 
-			una.setTitulo("Calorías por tipo de deporte");
-			una.setDescripcion("Consumo de calorías por tipo de deporte");
+			una.setTitulo(cntx.getString(R.string.titulo_est_portipodeporte));
+			una.setDescripcion(cntx.getString(R.string.desc_est_portipodeporte));
 			una.setConsultaSQL("select sportType as c0, count(_ID) as c1, avg(calories) as c2, sum(calories)/(sum(distance)/1000) as c3," +
-							   "sum(calories)/(sum(runtime)/1000/60/60) as c4 from session group by c0 ");
-
+							   "sum(calories)/(sum(runtime)/1000/60/60) as c4 from session where 1=1 group by c0 ");
+			una.setCamposOrden(" c0 desc ");
+			una.estableceConsultaOriginal();
+			una.setCamposOrden(null);
+							
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero_sportType,
 								 Tipo_Columna.TC_Entero,    
@@ -211,8 +255,11 @@ public class RelacionEstadisticas
 
 							 });
 
-			una.setTitulosCols(new String[] {"Tipo deporte", "Sesiones", "Calorías media", "Calorías/km", "Calorías/hora"});
-
+			una.setTitulosCols(new String[] {cntx.getString(R.string.col_tipodeporte), cntx.getString(R.string.col_sesiones), 
+								   cntx.getString(R.string.col_caloriasmedia), cntx.getString(R.string.col_caloriaskm), cntx.getString(R.string.col_caloriashora) });
+								   
+			una.setColumnasFiltro(new String[] {cntx.getString(R.string.col_tipodeporte)});
+			
 			relacion.add(una);
 			/*************************************/
 			/**** Fin elemento de la lista ****/
@@ -223,11 +270,14 @@ public class RelacionEstadisticas
 			/*************************************/
 			una = new Estadistica();
 
-			una.setTitulo("Relación completa");
-			una.setDescripcion("Relación completa de sesiones");
+			una.setTitulo(cntx.getString(R.string.titulo_est_relacioncompleta));
+			una.setDescripcion(cntx.getString(R.string.desc_est_relacioncompleta));
 			una.setConsultaSQL("select year as c0, month as c1, startTime as c2, startTime as c3, endTime as c4, sportType as c5, distance as c6," +
-							   "runtime as c7, calories as c8 from session order by c2 desc ");
-
+							   "runtime as c7, calories as c8 from session where 1=1 "); //order by c2 desc ");
+			una.setCamposOrden(" c0 desc, c1 desc, c2 desc, c3 desc ");
+			una.estableceConsultaOriginal();
+			una.setCamposOrden(null);
+			
 			una.setTiposCols(new Tipo_Columna[]
    							 { Tipo_Columna.TC_Entero,
 								 Tipo_Columna.TC_Entero_Mes,
@@ -240,31 +290,16 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero
 							 });
 
-			una.setTitulosCols(new String[] {"Año", "Mes", "Dia" , "Inicio", "Fin", "Tipo deporte", "Distancia", "Tiempo", "Calorías "});
-
+			una.setTitulosCols(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_mes), cntx.getString(R.string.col_dia), cntx.getString(R.string.col_inicio),cntx.getString(R.string.col_fin),
+											 cntx.getString(R.string.col_tipodeporte), 
+								   cntx.getString(R.string.col_distancia), cntx.getString(R.string.col_tiempo), cntx.getString(R.string.col_calorias) });
+			
+			una.setColumnasFiltro(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_mes), cntx.getString(R.string.col_tipodeporte)});
+			
 			relacion.add(una);
 			/*************************************/
 			/**** Fin elemento de la lista ****/
 			/*************************************/
-
-			/*************************************/
-			/**** Inicio elemento de la lista ****/
-			/**** Para la opcion de salir    ****/
-			/*************************************/
-			// solo mostramos esta opcion en version 1
-			if (Utilidades.getVersion().equals("1"))
-			{
-				una = new Estadistica();
-
-				una.setTitulo("Salir");
-				una.setDescripcion("Salir de la aplicación");
-
-				relacion.add(una);
-			}
-			/*************************************/
-			/**** Fin elemento de la lista ****/
-			/*************************************/
-
 
 			return relacion;
 
@@ -275,7 +310,7 @@ public class RelacionEstadisticas
 		}
     }
 
-    public static String[] getTitulos()
+    public static String[] getTitulos(Context pcntx)
 	{
 
 		if (titulos == null)
@@ -310,10 +345,7 @@ public class RelacionEstadisticas
 		else
 		{
 			// en version 1 el ultimo elemento no es una estadistica sino la opcion salir
-			if (Utilidades.getVersion().equals("1"))
-			{ return relacion.size()-1; }
-			else
-			{ return relacion.size(); }
+			return relacion.size(); 
 		}
     }
 

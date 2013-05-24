@@ -8,7 +8,6 @@ import android.os.*;
 import android.support.v4.app.*;
 import android.support.v4.view.*;
 import android.view.*;
-import android.widget.*;
 import es.fjpd.runstats3.*;
 import es.fjpd.runstats3.logica.*;
 
@@ -44,7 +43,7 @@ public class ScreenSlideActivity extends FragmentActivity
 	 * Posicion inicial. Primera pagina solicitada en el menu
 	 */
 	private int posicionActual=0;
-	
+
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
@@ -55,7 +54,14 @@ public class ScreenSlideActivity extends FragmentActivity
      * The pager adapter, which provides the pages to the view pager widget.
      */
     private PagerAdapter mPagerAdapter;
-	
+
+	// auxiliar para guardar el indice del campo elegido para el filtro
+	int indiceFiltro=0;
+
+	// auxiliares para ir construyendo la clasusula de ordenacion y filtro
+	String tmpOrderBy="";
+	String tmpWhere="";
+
 	private Context cntx = this;
 
     @Override
@@ -70,7 +76,8 @@ public class ScreenSlideActivity extends FragmentActivity
 
 		// recuperamos parámetros
 		Bundle bundle = getIntent().getExtras();
-		posicionInicial = bundle.getInt("ID_ESTADISTICA");       
+		posicionInicial = bundle.getInt("ID_ESTADISTICA");     
+		if (posicionActual == 0) posicionActual = posicionInicial;
 
 		// ActionBar - Personalizacion
 
@@ -78,7 +85,7 @@ public class ScreenSlideActivity extends FragmentActivity
 		if (Build.VERSION.RELEASE.startsWith("4"))
 		{
 			ActionBar actBar = getActionBar();
-			actBar.setTitle("Estadisticas de Runtastic");
+			actBar.setTitle(RunStats.getAppContext().getString(R.string.app_title));
 			actBar.setDisplayHomeAsUpEnabled(true);
 			actBar.setSubtitle(RelacionEstadisticas.getRelacion().get(posicionInicial).getDescripcion());
 		}
@@ -107,6 +114,11 @@ public class ScreenSlideActivity extends FragmentActivity
 						ActionBar actBar = getActionBar();
 						actBar.setSubtitle(RelacionEstadisticas.getRelacion().get(position).getDescripcion());
 					}
+
+					/*Toast.makeText(cntx, 
+					 RelacionEstadisticas.getRelacion().get(posicionActual).getLiteralCamposFiltro()+"***"+
+					 RelacionEstadisticas.getRelacion().get(posicionActual).getLiteralCamposOrden(),
+					 Toast.LENGTH_SHORT).show();*/
 				}
 			});
     }
@@ -121,20 +133,26 @@ public class ScreenSlideActivity extends FragmentActivity
 
 			getMenuInflater().inflate(R.menu.menu_screen_slide, menu);
 
-			menu.findItem(R.id.action_previous).setEnabled(mPager.getCurrentItem() > 0);
+			MenuItem item = menu.findItem(R.id.action_previous);
+			item.setEnabled(mPager.getCurrentItem() > 0);
+			if (mPager.getCurrentItem() <= 0)
+			{
+				item.setIcon(R.drawable.ic_action_previous_item_des);
+			}
 
-			// Add either a "next" or "finish" button to the action bar, depending on which page
-			// is currently selected.
-			MenuItem item = menu.add(Menu.NONE, R.id.action_next, Menu.NONE,
-									 (mPager.getCurrentItem() == mPagerAdapter.getCount() - 1)
-									 ? R.string.action_next
-									 : R.string.action_next);
+			item = menu.findItem(R.id.action_next);
+			item.setEnabled(mPager.getCurrentItem() < mPagerAdapter.getCount() - 1);
+			if (mPager.getCurrentItem() >= mPagerAdapter.getCount() - 1)
+			{ item.setIcon(R.drawable.ic_action_next_item_des); }
 
-			menu.findItem(R.id.action_next).setEnabled(mPager.getCurrentItem() < mPagerAdapter.getCount() - 1);
-
-
-
-			item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+			// Si la estadistica actual tiene campos de tipo filtro 
+			// mostramos la opcion de filtro habilitada en caso contrario deshabilitada
+			item = menu.findItem(R.id.action_filters);
+			item.setEnabled(RelacionEstadisticas.getRelacion().get(posicionActual).getColumnasFiltro() != null);
+			if (RelacionEstadisticas.getRelacion().get(posicionActual).getColumnasFiltro() == null)
+			{
+				item.setIcon(R.drawable.ic_action_search_des);
+			}
 		}
 		else
 		{
@@ -173,60 +191,191 @@ public class ScreenSlideActivity extends FragmentActivity
                 mPager.setCurrentItem(mPager.getCurrentItem() + 1);
                 return true;
 
-			case R.id.action_sort:
+				// AÑADIR ORDENACION
+			case R.id.action_addsort:
 
 				final String[] items = RelacionEstadisticas.getRelacion().get(posicionActual).getTitulosCols(); 
 				// mostramos dialogo para elegir campo
 				AlertDialog.Builder dialogo = new AlertDialog.Builder(cntx);
 				dialogo.setTitle(getString(R.string.select_field));
+				dialogo.setIcon(R.drawable.ic_action_import_export);
 				dialogo.setItems(items, 
 					new DialogInterface.OnClickListener()
 					{
 						public void onClick(DialogInterface p1, int p2)
 						{
-							RelacionEstadisticas.getRelacion().get(posicionActual ).setCamposOrden("c"+p2);
+							//RelacionEstadisticas.getRelacion().get(posicionActual).setCamposOrden("c" + p2);
+							tmpOrderBy = "c" + p2;
 							p1.dismiss();
-							
+
 							// mostramos dialogo para elegir orden
 							final String[] items2 = new String[]{getString(R.string.order_asc), getString(R.string.order_desc)};
 							AlertDialog.Builder dialogo2 = new AlertDialog.Builder(cntx);
 							dialogo2.setTitle(getString(R.string.select_sortorder));
+							dialogo2.setIcon(R.drawable.ic_action_import_export);
 							dialogo2.setItems(items2, 
 								new DialogInterface.OnClickListener()
 								{
 									public void onClick(DialogInterface p1, int p2)
 									{
-										String tmp = RelacionEstadisticas.getRelacion().get(posicionActual).getCamposOrden();
-										if (p2==0) //ASC
+										if (p2 == 0) //ASC
 										{
-											tmp+=" asc ";
+											tmpOrderBy += " asc ";
 										}
 										else
 										{
-											tmp+= " desc ";
+											tmpOrderBy += " desc ";
 										}
-										RelacionEstadisticas.getRelacion().get(posicionActual ).setCamposOrden(tmp);
+										RelacionEstadisticas.getRelacion().get(posicionActual).setCamposOrden(tmpOrderBy);
 										p1.dismiss();
 
 										mPager.setAdapter(mPagerAdapter);										
-										//mPager.setCurrentItem(0, true);
 										mPager.setCurrentItem(posicionActual, true);
 										//Toast.makeText(cntx, RelacionEstadisticas.getRelacion().get(mPager.getCurrentItem() ).getConsultaSQL(), Toast.LENGTH_LONG).show();
+
 									}
 
 								});
 
 							dialogo2.create().show();
-							
+
 						}
 
 					});
 
 				dialogo.create().show();
 
-				
-                                return true;
 
+				return true;
+
+				// INFORMACION FILTROS
+			case R.id.action_infofilter:
+
+				// mostramos dialogo para elegir campo
+				AlertDialog.Builder dialogoif = new AlertDialog.Builder(cntx);
+				dialogoif.setTitle(getString(R.string.filter_applied));
+				dialogoif.setMessage(RelacionEstadisticas.getRelacion().get(posicionActual).getLiteralCamposFiltro());
+				dialogoif.setIcon(R.drawable.ic_action_info);
+
+				dialogoif.setPositiveButton(R.string.action_back,
+					new DialogInterface.OnClickListener()
+					{
+						public void onClick(DialogInterface p1, int p2)
+						{
+							p1.dismiss();
+						}
+
+					});
+
+				dialogoif.create().show();
+
+
+				return true;
+
+				// INFORMACION ORDENACION
+			case R.id.action_infosort:
+
+				// mostramos dialogo para elegir campo
+				AlertDialog.Builder dialogois = new AlertDialog.Builder(cntx);
+				dialogois.setTitle(getString(R.string.sort_applied));
+				dialogois.setMessage(RelacionEstadisticas.getRelacion().get(posicionActual).getLiteralCamposOrden());
+				dialogois.setIcon(R.drawable.ic_action_info);
+
+				dialogois.setPositiveButton(R.string.action_back,
+					new DialogInterface.OnClickListener()
+					{
+						public void onClick(DialogInterface p1, int p2)
+						{
+							p1.dismiss();
+						}
+
+					});
+
+				dialogois.create().show();
+
+
+				return true;
+
+				// AÑADIR FILTRO
+			case R.id.action_addfilter:
+
+				final String[] itemsf = RelacionEstadisticas.getRelacion().get(posicionActual).getColumnasFiltro(); 
+				// mostramos dialogo para elegir campo
+				AlertDialog.Builder dialogof = new AlertDialog.Builder(cntx);
+				dialogof.setTitle(getString(R.string.select_field));
+				dialogof.setIcon(R.drawable.ic_action_search);
+				dialogof.setItems(itemsf, 
+					new DialogInterface.OnClickListener()
+					{
+						public void onClick(DialogInterface p1, int p2)
+						{
+
+							// de momento es la mejor manera que he encontrado de hacer esto
+							if (RelacionEstadisticas.getRelacion().get(posicionActual).getColumnasFiltro()[p2].equals("Año"))
+							{indiceFiltro = 0;}
+							else if (RelacionEstadisticas.getRelacion().get(posicionActual).getColumnasFiltro()[p2].equals("Mes"))
+							{indiceFiltro = 1;}
+							else
+							{indiceFiltro = 2;}
+
+							// ya sabemos que campo ha elegido el usuario, vamos montando el where
+							// "and campo="
+							tmpWhere = " " + FiltrosSQLDisponibles.getListaFiltros().get(indiceFiltro).getNombreCampoBD() + "=";
+
+							p1.dismiss();
+
+							// mostramos dialogo para elegir valor
+							final String[] itemsf2 = FiltrosSQLDisponibles.getListaFiltros().get(indiceFiltro).getListaValores();
+							AlertDialog.Builder dialogof2 = new AlertDialog.Builder(cntx);
+							dialogof2.setTitle(getString(R.string.select_value));
+							dialogof2.setIcon(R.drawable.ic_action_search);
+							dialogof2.setItems(itemsf2, 
+								new DialogInterface.OnClickListener()
+								{
+									public void onClick(DialogInterface p1, int p2)
+									{
+										// completamos la calusula where con el valor
+										tmpWhere += FiltrosSQLDisponibles.getListaFiltros().get(indiceFiltro).getValoresPosibles().get(p2).getValorCampo();
+										RelacionEstadisticas.getRelacion().get(posicionActual).setCamposFiltro(tmpWhere);
+										//Toast.makeText(cntx, RelacionEstadisticas.getRelacion().get(posicionActual ).getConsultaSQL(), Toast.LENGTH_LONG).show();
+
+										p1.dismiss();
+
+										mPager.setAdapter(mPagerAdapter);										
+										mPager.setCurrentItem(posicionActual, true);
+									}
+
+								});
+
+							dialogof2.create().show();
+
+						}
+
+					});
+
+				dialogof.create().show();
+
+
+				return true;
+
+			case R.id.action_discardfilter:
+
+				RelacionEstadisticas.getRelacion().get(posicionActual).reestableceFiltro();
+
+				mPager.setAdapter(mPagerAdapter);										
+				mPager.setCurrentItem(posicionActual, true);
+
+				return true;
+
+
+			case R.id.action_discardsort:
+
+				RelacionEstadisticas.getRelacion().get(posicionActual).reestableceOrden();
+
+				mPager.setAdapter(mPagerAdapter);										
+				mPager.setCurrentItem(posicionActual, true);
+
+				return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -256,9 +405,14 @@ public class ScreenSlideActivity extends FragmentActivity
             return NUM_PAGES;
         }
     }
-	
+
 	private void setPosicionActual(int pos)
 	{
-		posicionActual=pos;
+		posicionActual = pos;
+	}
+
+	private void setIndiceFiltro(int indice)
+	{
+		indiceFiltro = indice;
 	}
 }
