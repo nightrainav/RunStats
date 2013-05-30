@@ -60,6 +60,8 @@
 	<string name="col_tipodeporte">Tipo deporte</string>
 	<string name="col_kmtotal">Km total</string>
 	<string name="col_kmmedia">Km media</string>
+	<string name="col_kmhora">Km/hora</string>
+	<string name="col_minutoskm">Tiempo/Km</string>
 	<string name="col_tiempototal">Tiempo total</string>
 	<string name="col_tiempomedio">Tiempo medio</string>
 	<string name="col_caloriastotal">Calorías total</string>

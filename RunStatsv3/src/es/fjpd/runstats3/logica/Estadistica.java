@@ -367,7 +367,19 @@ public class Estadistica
 			if (literal.contains("c9"))
 			{
 				literal = 	literal.replaceAll("c9", titulosCols[9]);
-			}		
+			}
+			if (literal.contains("cc10"))
+			{
+				literal = 	literal.replaceAll("cc10", titulosCols[10]);
+			}
+			if (literal.contains("cc11"))
+			{
+				literal = 	literal.replaceAll("cc11", titulosCols[11]);
+			}
+			if (literal.contains("cc12"))
+			{
+				literal = 	literal.replaceAll("cc12", titulosCols[12]);
+			}
 		}
 		catch (Exception e)
 		{

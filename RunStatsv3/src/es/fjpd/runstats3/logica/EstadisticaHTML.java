@@ -352,16 +352,16 @@ public class EstadisticaHTML
 		String tmp ="";
 
 		// horas
-		tmp = String.valueOf((ms / (1000 * 60 * 60)));
-		resultado += tmp.trim() + ":";
+		tmp = String.valueOf((ms / (1000 * 60 * 60))).trim();
+		resultado += (tmp.equals("0")?"":tmp + ":");
 
 		// minutos
-		tmp = String.valueOf((ms / (1000 * 60)) % 60);
-		resultado += tmp.trim() + ":";
+		tmp = String.valueOf((ms / (1000 * 60)) % 60).trim();
+		resultado += (tmp.length()==1?"0"+tmp:tmp) + ":";
 
 		//segundos
-		tmp = String.valueOf((ms / 1000) % 60);
-		resultado += tmp.trim();
+		tmp = String.valueOf((ms / 1000) % 60).trim();
+		resultado += (tmp.length()==1?"0"+tmp:tmp) ;
 
 		return resultado;
 		

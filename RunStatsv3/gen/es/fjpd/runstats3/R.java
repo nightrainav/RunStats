@@ -76,39 +76,41 @@ public final class R {
          */
         public static final int app_name=0x7f040000;
         public static final int app_title=0x7f040001;
-        public static final int col_anio=0x7f040035;
+        public static final int col_anio=0x7f040037;
         public static final int col_calorias=0x7f04002a;
-        public static final int col_caloriashora=0x7f040034;
-        public static final int col_caloriaskm=0x7f040033;
-        public static final int col_caloriasmedia=0x7f040032;
-        public static final int col_caloriastotal=0x7f040031;
-        public static final int col_dia=0x7f040037;
+        public static final int col_caloriashora=0x7f040036;
+        public static final int col_caloriaskm=0x7f040035;
+        public static final int col_caloriasmedia=0x7f040034;
+        public static final int col_caloriastotal=0x7f040033;
+        public static final int col_dia=0x7f040039;
         public static final int col_distancia=0x7f040029;
-        public static final int col_fin=0x7f040039;
-        public static final int col_inicio=0x7f040038;
+        public static final int col_fin=0x7f04003b;
+        public static final int col_inicio=0x7f04003a;
+        public static final int col_kmhora=0x7f04002f;
         public static final int col_kmmedia=0x7f04002e;
         public static final int col_kmtotal=0x7f04002d;
-        public static final int col_mes=0x7f040036;
+        public static final int col_mes=0x7f040038;
+        public static final int col_minutoskm=0x7f040030;
         /**  Columnas 
          */
         public static final int col_sesiones=0x7f040028;
         public static final int col_tiempo=0x7f04002b;
-        public static final int col_tiempomedio=0x7f040030;
-        public static final int col_tiempototal=0x7f04002f;
+        public static final int col_tiempomedio=0x7f040032;
+        public static final int col_tiempototal=0x7f040031;
         public static final int col_tipodeporte=0x7f04002c;
         /**  Messages 
          */
         public static final int db_not_found=0x7f04000c;
-        public static final int desc_est_caloriastipodeporte=0x7f040048;
-        public static final int desc_est_poranios=0x7f040044;
-        public static final int desc_est_poraniostipodeporte=0x7f040045;
-        public static final int desc_est_pormeses=0x7f040046;
-        public static final int desc_est_pormesestipodeporte=0x7f040047;
-        public static final int desc_est_portipodeporte=0x7f040043;
-        public static final int desc_est_relacioncompleta=0x7f040049;
+        public static final int desc_est_caloriastipodeporte=0x7f04004a;
+        public static final int desc_est_poranios=0x7f040046;
+        public static final int desc_est_poraniostipodeporte=0x7f040047;
+        public static final int desc_est_pormeses=0x7f040048;
+        public static final int desc_est_pormesestipodeporte=0x7f040049;
+        public static final int desc_est_portipodeporte=0x7f040045;
+        public static final int desc_est_relacioncompleta=0x7f04004b;
         /**  Descripciones de estadisticas 
          */
-        public static final int desc_est_total=0x7f040042;
+        public static final int desc_est_total=0x7f040044;
         public static final int filter=0x7f040007;
         public static final int filter_applied=0x7f040005;
         public static final int mes_abril=0x7f04001b;
@@ -139,16 +141,16 @@ public final class R {
         public static final int tipod_correr=0x7f040025;
         public static final int tipod_mtb=0x7f040027;
         public static final int tipod_senderismo=0x7f040026;
-        public static final int titulo_est_caloriastipodeporte=0x7f040040;
-        public static final int titulo_est_poranios=0x7f04003c;
-        public static final int titulo_est_poraniostipodeporte=0x7f04003d;
-        public static final int titulo_est_pormeses=0x7f04003e;
-        public static final int titulo_est_pormesestipodeporte=0x7f04003f;
-        public static final int titulo_est_portipodeporte=0x7f04003b;
-        public static final int titulo_est_relacioncompleta=0x7f040041;
+        public static final int titulo_est_caloriastipodeporte=0x7f040042;
+        public static final int titulo_est_poranios=0x7f04003e;
+        public static final int titulo_est_poraniostipodeporte=0x7f04003f;
+        public static final int titulo_est_pormeses=0x7f040040;
+        public static final int titulo_est_pormesestipodeporte=0x7f040041;
+        public static final int titulo_est_portipodeporte=0x7f04003d;
+        public static final int titulo_est_relacioncompleta=0x7f040043;
         /**  Titulos de estadisticas 
          */
-        public static final int titulo_est_total=0x7f04003a;
+        public static final int titulo_est_total=0x7f04003c;
     }
     public static final class style {
         public static final int Theme_Personalizado=0x7f050000;
