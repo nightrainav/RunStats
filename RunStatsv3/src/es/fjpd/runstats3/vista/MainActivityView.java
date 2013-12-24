@@ -137,6 +137,9 @@ public class MainActivityView extends Activity
 				//BaseDatos.cerrar();
 				finish();
 				return true;
+			case R.id.action_prefs:
+				startActivity(new Intent(MainActivityView.this, OpcionesActivity.class));
+				return true;
         }
 
         return super.onOptionsItemSelected(item);

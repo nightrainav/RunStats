@@ -22,8 +22,6 @@ public class EstadisticaHTMLView extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.estadistica_html_view);
 
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
 		// recuperamos parámetros
 
 		Bundle bundle = getIntent().getExtras();
@@ -34,7 +32,12 @@ public class EstadisticaHTMLView extends Activity
 		//actBar.setTitle(RelacionEstadisticas.getRelacion().get(idEstadistica).getTitulo());
 		actBar.setTitle("Estadisticas de Runtastic");
 		actBar.setSubtitle(RelacionEstadisticas.getRelacion().get(idEstadistica).getDescripcion());
-		
+
+		// si la estadistica no permite orientacion vertical forzamos la apaisada
+		// excepto en tablets, en cuyo caso no la forzamos
+		if (!RelacionEstadisticas.getRelacion().get(idEstadistica).isPermiteOrientacionVertical()
+			&& !Utilidades.isTablet())
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);		
 		
 		actBar.setDisplayHomeAsUpEnabled(true);
 
@@ -45,9 +48,37 @@ public class EstadisticaHTMLView extends Activity
 
 			html = new EstadisticaHTML(RelacionEstadisticas.getRelacion().get(idEstadistica)).getHtml();
 
-
 			webView = (WebView) findViewById(R.id.webView1);
-			webView.getSettings().setJavaScriptEnabled(false);
+			
+			//webView.loadData(html, "text/html", "UTF-8");
+	
+			webView.setWebViewClient(new WebViewClient());
+			/*{
+					@Override
+					public void onPageFinished(WebView view, String url)
+					{
+						onPageFinished(view, url);
+						view.addJavascriptInterface(new WebAppUpdater(view.getContext()), "Updater");
+						
+					}
+			}
+			);*/
+			
+			
+			webView.setWebChromeClient(new WebChromeClient());
+				/*{
+				   @Override
+				   public boolean onJsAlert(WebView view, String url, String message, JsResult result)
+				   {
+					   return super.onJsAlert(view, url, message, result);
+				   }
+					
+				   
+				}
+			);*/
+			
+			webView.getSettings().setJavaScriptEnabled(true);
+			//webView.addJavascriptInterface(new WebAppUpdater(this), "Updater");
 
 			webView.loadData(html, "text/html", "UTF-8");
 

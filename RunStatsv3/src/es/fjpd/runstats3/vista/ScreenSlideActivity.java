@@ -205,7 +205,16 @@ public class ScreenSlideActivity extends FragmentActivity
 						public void onClick(DialogInterface p1, int p2)
 						{
 							//RelacionEstadisticas.getRelacion().get(posicionActual).setCamposOrden("c" + p2);
-							tmpOrderBy = "c" + p2;
+							
+							if (p2<10)
+							{
+								tmpOrderBy = "c" + p2;
+							}
+							else
+							{
+								tmpOrderBy = "cc" + p2;
+							}
+							
 							p1.dismiss();
 
 							// mostramos dialogo para elegir orden

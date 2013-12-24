@@ -23,11 +23,31 @@ public class Estadistica
     // Títulos que queremos para las columnas
     String[] titulosCols;
 
+	public void setIsPermiteOrientacionVertical(boolean isPermiteOrientacionVertical)
+	{
+		this.isPermiteOrientacionVertical = isPermiteOrientacionVertical;
+	}
+
+	public boolean isPermiteOrientacionVertical()
+	{
+		return isPermiteOrientacionVertical;
+	}
+
+	public void setTipo(Tipo_Estadistica tipo)
+	{
+		this.tipo = tipo;
+	}
+
+	public Tipo_Estadistica getTipo()
+	{
+		return tipo;
+	}
+
     // Tipos de datos para las columnas
     // El tipo especial Entero_sportType se usa para identificar esta columna
     // y poder convertirla a su nombre, ya que no están en tabla
     public enum Tipo_Columna
-	{TC_Entero_sportType, TC_Entero, TC_Entero_Ms_Horas, TC_Entero_Ms_Hora, TC_Entero_Ms_Dia, TC_Entero_Mes, TC_Real, TC_Real_Metros, TC_Cadena};
+	{TC_Entero_sportType, TC_Entero_Anio, TC_Entero, TC_Entero_Ms_Horas, TC_Entero_Ms_HorasPorDistancia, TC_Entero_Ms_Hora, TC_Entero_Ms_Dia, TC_Entero_Mes, TC_Real, TC_Real_Metros, TC_Cadena};
     // Tipos de las columnas
     Tipo_Columna[] tiposCols;
 
@@ -42,7 +62,15 @@ public class Estadistica
 	// para cada consulta indicamos las columnas por las que
 	// tiene sentido filtrar
 	String[] columnasFiltro;
+	
+	// Tipo de la estadistica, para distinguir las simples (tablas de datos) de otras especiales
+	public enum Tipo_Estadistica
+	{TE_Tabla_General, TE_Fichas};
+    Tipo_Estadistica tipo;
 
+	// Indica si la estadistica a mostrar permite orientacion vertical; en caso contrario se forzara apaisada
+	boolean isPermiteOrientacionVertical = true;
+	
     public Estadistica()
     {
 

@@ -39,6 +39,8 @@ public class Utilidades
 		{ return contexto.getString(R.string.tipod_senderismo); }
 		else if (valor == 4)
 		{ return contexto.getString(R.string.tipod_mtb); }
+		else if (valor == 3)
+		{ return contexto.getString(R.string.tipod_ciclismo); }
 		else
 		{ return valor + " ¿? "; }
     }

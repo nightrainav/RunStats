@@ -32,6 +32,7 @@ public class RelacionEstadisticas
 			una = new Estadistica();
 
 			// Datos globales
+			una.setTipo(Tipo_Estadistica.TE_Tabla_General);
 			una.setTitulo(cntx.getString(R.string.titulo_est_total));
 			una.setDescripcion(cntx.getString(R.string.desc_est_total));
 			una.setConsultaSQL("select count(_ID) as c0, sum(distance) as c1, sum (runtime) as c2, sum (calories) as c3 from session where 1=1 ");
@@ -47,7 +48,8 @@ public class RelacionEstadisticas
 							  			     cntx.getString(R.string.col_tiempo), cntx.getString(R.string.col_calorias)});
 			una.setColumnasFiltro(null);
 			una.estableceConsultaOriginal();
-
+			una.setIsPermiteOrientacionVertical(true);
+			
 			relacion.add(una);  
 			/*************************************/
 			/**** Fin elemento de la lista ****/
@@ -59,6 +61,7 @@ public class RelacionEstadisticas
 			una = new Estadistica();
 
 			// Por tipo de deporte
+			una.setTipo(Tipo_Estadistica.TE_Tabla_General);
 			una.setTitulo(cntx.getString(R.string.titulo_est_portipodeporte) );
 			una.setDescripcion(cntx.getString(R.string.desc_est_portipodeporte));
 			una.setConsultaSQL(" select sportType as c0, count(_ID) as c1, sum(distance) as c2, avg(distance) as c3," +
@@ -76,7 +79,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Real_Metros,
-								 Tipo_Columna.TC_Entero_Ms_Horas,
+								 Tipo_Columna.TC_Entero_Ms_HorasPorDistancia,
 								 Tipo_Columna.TC_Entero,
 								 Tipo_Columna.TC_Entero
 							 });
@@ -98,6 +101,7 @@ public class RelacionEstadisticas
 			una = new Estadistica();
 
 			// Por años
+			una.setTipo(Tipo_Estadistica.TE_Tabla_General);
 			una.setTitulo(cntx.getString(R.string.titulo_est_poranios));
 			una.setDescripcion(cntx.getString(R.string.desc_est_poranios));
 			una.setConsultaSQL("select year as c0, count(_ID) as c1, sum(distance) as c2, avg(distance) as c3, " +
@@ -108,14 +112,14 @@ public class RelacionEstadisticas
 			una.setCamposOrden(null);
 			
 			una.setTiposCols(new Tipo_Columna[]
-   							 { Tipo_Columna.TC_Entero,
+   							 { Tipo_Columna.TC_Entero_Anio,
 								 Tipo_Columna.TC_Entero,    
 								 Tipo_Columna.TC_Real_Metros,
 								 Tipo_Columna.TC_Real_Metros,
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Real_Metros,
-								 Tipo_Columna.TC_Entero_Ms_Horas,
+								 Tipo_Columna.TC_Entero_Ms_HorasPorDistancia,
 								 Tipo_Columna.TC_Entero,
 								 Tipo_Columna.TC_Entero
 							 });
@@ -139,6 +143,7 @@ public class RelacionEstadisticas
 			una = new Estadistica();
 
 			// Por años y tipo de deporte
+			una.setTipo(Tipo_Estadistica.TE_Tabla_General);
 			una.setTitulo(cntx.getString(R.string.titulo_est_poraniostipodeporte));
 			una.setDescripcion(cntx.getString(R.string.desc_est_poraniostipodeporte));
 			una.setConsultaSQL("select year as c0, sportType as c1, count(_ID) as c2, sum(distance) as c3, avg(distance) as c4," +
@@ -149,7 +154,7 @@ public class RelacionEstadisticas
 			una.setCamposOrden(null);
 			
 			una.setTiposCols(new Tipo_Columna[]
-   							 { Tipo_Columna.TC_Entero,
+   							 { Tipo_Columna.TC_Entero_Anio,
 								 Tipo_Columna.TC_Entero_sportType,
 								 Tipo_Columna.TC_Entero,    
 								 Tipo_Columna.TC_Real_Metros,
@@ -157,7 +162,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Real_Metros,
-								 Tipo_Columna.TC_Entero_Ms_Horas,
+								 Tipo_Columna.TC_Entero_Ms_HorasPorDistancia,
 								 Tipo_Columna.TC_Entero,
 								 Tipo_Columna.TC_Entero
 							 });
@@ -181,6 +186,7 @@ public class RelacionEstadisticas
 			una = new Estadistica();
 
 			// Por meses
+			una.setTipo(Tipo_Estadistica.TE_Tabla_General);
 			una.setTitulo(cntx.getString(R.string.titulo_est_pormeses));
 			una.setDescripcion(cntx.getString(R.string.desc_est_pormeses));
 			una.setConsultaSQL("select year as c0, month as c1, count(_ID) as c2, sum(distance) as c3, avg(distance) as c4," +
@@ -191,7 +197,7 @@ public class RelacionEstadisticas
 			una.setCamposOrden(null);
 
 			una.setTiposCols(new Tipo_Columna[]
-   							 { Tipo_Columna.TC_Entero,
+   							 { Tipo_Columna.TC_Entero_Anio,
 								 Tipo_Columna.TC_Entero_Mes,
 								 Tipo_Columna.TC_Entero,    
 								 Tipo_Columna.TC_Real_Metros,
@@ -199,7 +205,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Real_Metros,
-								 Tipo_Columna.TC_Entero_Ms_Horas,
+								 Tipo_Columna.TC_Entero_Ms_HorasPorDistancia,
 								 Tipo_Columna.TC_Entero,
 								 Tipo_Columna.TC_Entero
 							 });
@@ -223,6 +229,7 @@ public class RelacionEstadisticas
 			una = new Estadistica();
 
 			// Por meses y tipo de deporte
+			una.setTipo(Tipo_Estadistica.TE_Tabla_General);
 			una.setTitulo(cntx.getString(R.string.titulo_est_pormesestipodeporte));
 			una.setDescripcion(cntx.getString(R.string.desc_est_pormesestipodeporte));
 			una.setConsultaSQL("select year as c0, month as c1, sportType as c2, count(_ID) as c3, sum(distance) as c4, avg(distance) as c5," +
@@ -233,7 +240,7 @@ public class RelacionEstadisticas
 			una.setCamposOrden(null);
 			
 			una.setTiposCols(new Tipo_Columna[]
-   							 { Tipo_Columna.TC_Entero,
+   							 { Tipo_Columna.TC_Entero_Anio,
 								 Tipo_Columna.TC_Entero_Mes,
 								 Tipo_Columna.TC_Entero_sportType,
 								 Tipo_Columna.TC_Entero,    
@@ -242,7 +249,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Real_Metros,
-								 Tipo_Columna.TC_Entero_Ms_Horas,
+								 Tipo_Columna.TC_Entero_Ms_HorasPorDistancia,
 								 Tipo_Columna.TC_Entero,
 								 Tipo_Columna.TC_Entero
 							 });
@@ -265,10 +272,11 @@ public class RelacionEstadisticas
 			una = new Estadistica();
 
 			// Calorias por tipo de deporte
+			una.setTipo(Tipo_Estadistica.TE_Tabla_General);
 			una.setTitulo(cntx.getString(R.string.titulo_est_caloriastipodeporte));
 			una.setDescripcion(cntx.getString(R.string.desc_est_caloriastipodeporte));
-			una.setConsultaSQL("select sportType as c0, count(_ID) as c1, sum(calories), avg(calories) as c2, sum(calories)/(sum(distance)/1000.0) as c3," +
-							   "sum(calories)/(sum(runtime)/1000.0/60.0/60.0) as c4 from session where 1=1 group by c0 ");
+			una.setConsultaSQL("select sportType as c0, count(_ID) as c1, sum(calories) as c2, avg(calories) as c3, sum(calories)/(sum(distance)/1000.0) as c4," +
+							   "sum(calories)/(sum(runtime)/1000.0/60.0/60.0) as c5 from session where 1=1 group by c0 ");
 			una.setCamposOrden(" c0 desc ");
 			una.estableceConsultaOriginal();
 			una.setCamposOrden(null);
@@ -299,6 +307,7 @@ public class RelacionEstadisticas
 			una = new Estadistica();
 
 			// Relacion completa
+			una.setTipo(Tipo_Estadistica.TE_Tabla_General);
 			una.setTitulo(cntx.getString(R.string.titulo_est_relacioncompleta));
 			una.setDescripcion(cntx.getString(R.string.desc_est_relacioncompleta));
 			una.setConsultaSQL("select year as c0, month as c1, startTime as c2, startTime as c3, endTime as c4, sportType as c5, distance as c6," +
@@ -308,7 +317,7 @@ public class RelacionEstadisticas
 			una.setCamposOrden(null);
 			
 			una.setTiposCols(new Tipo_Columna[]
-   							 { Tipo_Columna.TC_Entero,
+   							 { Tipo_Columna.TC_Entero_Anio,
 								 Tipo_Columna.TC_Entero_Mes,
 								 Tipo_Columna.TC_Entero_Ms_Dia,
 								 Tipo_Columna.TC_Entero_Ms_Hora,
@@ -317,7 +326,7 @@ public class RelacionEstadisticas
 								 Tipo_Columna.TC_Real_Metros,
 								 Tipo_Columna.TC_Entero_Ms_Horas,
 								 Tipo_Columna.TC_Real_Metros,
-								 Tipo_Columna.TC_Entero_Ms_Horas,
+								 Tipo_Columna.TC_Entero_Ms_HorasPorDistancia,
 								 Tipo_Columna.TC_Entero
 							 });
 
@@ -332,6 +341,56 @@ public class RelacionEstadisticas
 			/*************************************/
 			/**** Fin elemento de la lista ****/
 			/*************************************/
+
+
+			/*************************************/
+			/**** Inicio elemento de la lista ****/
+			/*************************************/
+			una = new Estadistica();
+
+			// Relacion completa - FICHAS
+			una.setTipo(Tipo_Estadistica.TE_Fichas);
+			una.setTitulo(cntx.getString(R.string.titulo_est_relacioncompleta_fichas));
+			una.setDescripcion(cntx.getString(R.string.desc_est_relacioncompleta_fichas));
+			una.setConsultaSQL("select year as c0, month as c1, startTime as c2, startTime as c3, endTime as c4, sportType as c5, distance as c6," +
+							   "runtime as c7, distance/(runtime/1000.0/60.0/60.0) as c8, runtime/(distance/1000.0) as c9, calories as cc10, "+
+							   "elevationGain as cc11, elevationLoss as cc12, note as cc13, _ID as cc14, pauseInMillis as cc15 from session where 1=1 "); //order by c2 desc ");
+			una.setCamposOrden(" c0 desc, c1 desc, c2 desc, c3 desc ");
+			una.estableceConsultaOriginal();
+			una.setCamposOrden(null);
+
+			una.setTiposCols(new Tipo_Columna[]
+   							   { Tipo_Columna.TC_Entero_Anio,
+								 Tipo_Columna.TC_Entero_Mes,
+								 Tipo_Columna.TC_Entero_Ms_Dia,
+								 Tipo_Columna.TC_Entero_Ms_Hora,
+								 Tipo_Columna.TC_Entero_Ms_Hora,
+								 Tipo_Columna.TC_Entero_sportType,
+								 Tipo_Columna.TC_Real_Metros,
+								 Tipo_Columna.TC_Entero_Ms_Horas,
+								 Tipo_Columna.TC_Real_Metros,
+								 Tipo_Columna.TC_Entero_Ms_HorasPorDistancia,
+								 Tipo_Columna.TC_Entero,
+								 Tipo_Columna.TC_Entero,
+								 Tipo_Columna.TC_Entero,
+								 Tipo_Columna.TC_Cadena,
+								 Tipo_Columna.TC_Entero,
+								 Tipo_Columna.TC_Entero_Ms_Horas
+							 });
+
+			una.setTitulosCols(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_mes), cntx.getString(R.string.col_dia), cntx.getString(R.string.col_inicio),cntx.getString(R.string.col_fin),
+								   cntx.getString(R.string.col_tipodeporte), 
+								   cntx.getString(R.string.col_distancia), cntx.getString(R.string.col_tiempo), cntx.getString(R.string.col_kmhora),
+								   cntx.getString(R.string.col_minutoskm), cntx.getString(R.string.col_calorias), "", "", "" });
+
+			una.setColumnasFiltro(new String[] {cntx.getString(R.string.col_anio), cntx.getString(R.string.col_mes), cntx.getString(R.string.col_tipodeporte)});
+			una.setIsPermiteOrientacionVertical(true);
+			
+			relacion.add(una);
+			/*************************************/
+			/**** Fin elemento de la lista ****/
+			/*************************************/
+			
 
 			return relacion;
 
