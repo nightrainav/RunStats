@@ -44,7 +44,24 @@ public class MainActivityView extends Activity
 
 		if (BaseDatos.getRutaBD().equals(""))
 		{
-			Toast.makeText(MainActivityView.this, RunStats.getAppContext().getString(R.string.db_not_found) , Toast.LENGTH_LONG).show();
+			//Toast.makeText(MainActivityView.this, RunStats.getAppContext().getString(R.string.db_not_found) , Toast.LENGTH_LONG).show();
+		
+			AlertDialog.Builder alertBld = new AlertDialog.Builder(MainActivityView.this);
+			
+			alertBld.setTitle(RunStats.getAppContext().getString(R.string.db_not_found_title));
+			alertBld.setMessage(RunStats.getAppContext().getString(R.string.db_not_found));
+			alertBld.setPositiveButton("OK", new DialogInterface.OnClickListener()
+			{
+				public void onClick (DialogInterface dlg, int id)
+				{
+					dlg.cancel();
+					finish();
+				}
+			});
+			
+			AlertDialog alerta = alertBld.create();
+			
+			alerta.show();
 		}
 		else
 		{ 

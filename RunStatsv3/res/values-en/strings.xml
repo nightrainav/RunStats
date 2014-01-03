@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Titles -->
-    <string name="app_name">RunStats v3.0</string>
+    <string name="app_name">RunStats</string>
 	<string name="app_title">Runtastic Statistics</string>
 	<string name="select_field">Select a field</string>
 	<string name="select_sortorder">Select an order</string>
@@ -35,7 +35,8 @@
 	</string-array>
 	
 	<!-- Messages -->
-	<string name="db_not_found">Runtastic database not found in SD card. Change it´s location in Runtastic (General options / Database location)</string>
+	<string name="db_not_found_title">Database not found</string>
+	<string name="db_not_found">Runtastic database not found in SD card. RunStats can only access Runtastic database in one of these two conditions:\n   - Runtastic is installed on SD card\n   - You change database location in Runtastic settings (General options / Database location)</string>
 	<string name="no_description">Empty description</string>
 	
     <!-- Actions -->

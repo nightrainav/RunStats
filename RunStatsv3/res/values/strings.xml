@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Titles -->
-    <string name="app_name">RunStats v3.0</string>
+    <string name="app_name">RunStats</string>
 	<string name="app_title">Estadísticas de Runtastic</string>
 	<string name="select_field">Elija un campo</string>
 	<string name="select_sortorder">Elija un orden</string>
@@ -34,7 +34,8 @@
 	</string-array>
 	
 	<!-- Messages -->
-	<string name="db_not_found">No se ha encontrado la Base de Datos de Runtastic en la SD. Cambie la ubicacion en Runtastic (Opciones generales / Ubicacion de datos)</string>
+	<string name="db_not_found_title">Base de Datos no encontrada</string>
+	<string name="db_not_found">No se ha encontrado la Base de Datos de Runtastic en la SD. Para que RunStats pueda acceder a la base de datos de Runtastic debe realizar alguna de estas dos acciones: \n    - Mover Runtastic a la SD\n    - Cambiar la ubicacion de los datos dentro de Runtastic (Opciones generales / Ubicacion de datos)</string>
 	<string name="no_description">Sin descripción</string>
 	
     <!-- Actions -->

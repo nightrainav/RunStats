@@ -346,6 +346,8 @@ public class RelacionEstadisticas
 			/*************************************/
 			/**** Inicio elemento de la lista ****/
 			/*************************************/
+			
+			/** De momento no la inlcuimos
 			una = new Estadistica();
 
 			// Relacion completa - FICHAS
