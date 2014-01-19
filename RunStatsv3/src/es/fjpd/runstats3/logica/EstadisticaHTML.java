@@ -79,7 +79,7 @@ public class EstadisticaHTML
 			codigo.append("  h1 {color: white; background-color:#AAA; font-weight: bold; font-family: Arial, Verdana; font-size: 100%; padding:2px;}\n ");
 			codigo.append("  h2 {color: black; background-color:#EEE; font-weight: bold; font-family: Arial, Verdana; font-size: 60%; padding:2px;}\n ");
 			codigo.append("  table {border-width:2px solid transparent;}\n ");
-			codigo.append("  th {color: white; background-color:blue; font-weight: bold; font-family: Arial, Verdana; font-size: 60%; padding:2px;}\n ");
+			codigo.append("  th {color: white; background-color:#4F81BD; font-weight: bold; font-family: Arial, Verdana; font-size: 60%; padding:2px;}\n ");
 			codigo.append("  tr.par {background-color:#EEE; padding:2px; font-family: Arial, Verdana; font-size: 60%; }\n ");
 			codigo.append("  tr.impar {color: black; padding:2px; font-family: Arial, Verdana; font-size: 60%; background-color:white;}\n");
 			codigo.append("  td {padding:2px; }\n ");

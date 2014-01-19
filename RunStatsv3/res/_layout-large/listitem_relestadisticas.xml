@@ -10,13 +10,13 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:textStyle="bold"
-		android:textSize="56px" />
+		android:textSize="26sp" />
 
 	<TextView android:id="@+id/LblSubTitulo"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:textStyle="normal"
-		android:textSize="36px" />
+		android:textSize="15sp" />
 
 </LinearLayout>
 

@@ -52,7 +52,7 @@ public class EstadisticaHTMLView extends Activity
 			
 			//webView.loadData(html, "text/html", "UTF-8");
 	
-			webView.setWebViewClient(new WebViewClient());
+			//webView.setWebViewClient(new WebViewClient());
 			/*{
 					@Override
 					public void onPageFinished(WebView view, String url)
@@ -65,7 +65,7 @@ public class EstadisticaHTMLView extends Activity
 			);*/
 			
 			
-			webView.setWebChromeClient(new WebChromeClient());
+			//webView.setWebChromeClient(new WebChromeClient());
 				/*{
 				   @Override
 				   public boolean onJsAlert(WebView view, String url, String message, JsResult result)
@@ -77,10 +77,12 @@ public class EstadisticaHTMLView extends Activity
 				}
 			);*/
 			
-			webView.getSettings().setJavaScriptEnabled(true);
+			//webView.getSettings().setJavaScriptEnabled(true);
 			//webView.addJavascriptInterface(new WebAppUpdater(this), "Updater");
 
 			webView.loadData(html, "text/html", "UTF-8");
+			
+			html=null;
 
 
 

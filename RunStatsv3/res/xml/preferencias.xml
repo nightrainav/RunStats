@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	    <!--<PreferenceCategory android:title="Unidades">-->
-		<ListPreference
-			android:key="unidades"
-			android:title="@string/prefs_ud"
-			android:summary="@string/prefs_ud_long"
-			android:dialogTitle="@string/prefs_ud_select"
-			android:entries="@array/nombreunidades"
-			android:entryValues="@array/codigounidades" />
-		<!--    </PreferenceCategory>-->
+
+	
+	<ListPreference
+		android:key="idioma"
+		android:title="@string/prefs_idioma"
+		android:summary="@string/prefs_idioma_app"
+		android:dialogTitle="@string/prefs_idioma_select"
+		android:entries="@array/nombreidiomas"
+		android:entryValues="@array/codigoidiomas" />
+
+
+	<ListPreference
+		android:key="unidades"
+		android:title="@string/prefs_ud"
+		android:summary="@string/prefs_ud_long"
+		android:dialogTitle="@string/prefs_ud_select"
+		android:entries="@array/nombreunidades"
+		android:entryValues="@array/codigounidades"
+		android:defaultValue="km" />
+
+	<!--    </PreferenceCategory>-->
 </PreferenceScreen>

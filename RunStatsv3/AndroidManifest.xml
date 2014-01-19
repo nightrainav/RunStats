@@ -35,7 +35,7 @@
         </activity>
 
 		<activity
-            android:name=".vista.OpcionesActivity" 
+            android:name=".vista.PreferenciasActivity" 
 			android:parentActivityName=".vista.MainActivityView"
 			android:label="@string/preferencias">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
