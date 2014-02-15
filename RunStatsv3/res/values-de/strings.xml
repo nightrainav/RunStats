@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Titles -->
+    <string name="app_name">RunStats</string>
+	<string name="app_title">Runtastic Statistiken</string>
+	<string name="select_field">Bereich auswählen</string> 
+	<string name="select_sortorder">Anordnen</string>
+	<string name="select_value">Wert auswählen</string>
+	<string name="filter_applied">Gefiltert</string>
+	<string name="sort_applied">Sortiert</string>
+	<string name="filter">Filter</string>
+	<string name="order">Ordnung</string>
+	<string name="select_stat">"Statistik auswählen"</string>
+
+	<string name="order_asc">Aufsteigend</string>
+	<string name="order_desc">Absteigend</string>
+
+
+	<!-- Preferences -->
+	<string name="preferencias">RunStats Präferenzen</string>
+    <string name="prefs_ud">Einheiten</string>
+	<string name="prefs_ud_select">Einheit auswählen</string>
+    <string name="prefs_ud_long">Strecke Einheiten</string>
+	<string name="pref_ud_km">Kilometer</string>
+	<string name="pref_ud_ml">Meilen</string>
+
+	<string-array name = "nombreunidades">
+		<item>Kilometer</item>
+		<item>Meilen</item>
+	</string-array>
+	<string-array name = "codigounidades">
+		<item>km</item>
+		<item>ml</item>
+	</string-array>
+	
+	<string name="prefs_idioma">Sprache</string>
+	<string name="prefs_idioma_select">Sprache auswählen</string>
+	<string name="prefs_idioma_app">Anwendungssprache (neustart erforderlich)</string>
+
+	<string-array name = "nombreidiomas">
+		<item>Spanisch</item>
+		<item>Englisch</item>
+		<item>Deutsch</item>
+	</string-array>
+	<string-array name = "codigoidiomas">
+		<item>es</item>
+		<item>en</item>
+		<item>de</item>
+	</string-array>
+	
+	
+	<!-- Messages -->
+	<string name="db_not_found_title">Datenbank nicht gefunden</string>
+	<string name="db_not_found">Runtastic Datenbank auf SD Karte nicht gefunden. RunStats kann nur Runtastic Datenbank unter eine von folgenden Bedingungen zugreifen:\n   - Runtastic ist auf der SD Karte installiert\n - Runtastic Datenbank standort bitte unter Einstellungen ändern (General options / Allgemeine Einstellungen / Datenbank Standort)</string>
+	<string name="no_description">Leere Beschreibung</string>
+	
+    <!-- Actions -->
+    <string name="action_previous">Vorheriger</string>
+    <string name="action_next">Nächster</string>
+	<string name="action_exit">Exit</string> 
+	<string name="action_back">Zurück</string>
+	<string name="action_sort">Sortieren</string>
+	<string name="action_filter">Filtern</string>
+
+	<string name="action_addsort">Sortierung hinfügen</string>
+	<string name="action_addfilter">Filter hinfügen</string>
+	<string name="action_nosort">Sortierung auswerfen</string>
+	<string name="action_nofilter">Filter auswerfen</string> 
+	<string name="action_info">Information</string> 
+
+	<!-- Meses -->
+	<string name="mes_enero">Januar</string>
+	<string name="mes_febrero">Februar</string>
+	<string name="mes_marzo">März</string>
+	<string name="mes_abril">April</string>
+	<string name="mes_mayo">May</string>
+	<string name="mes_junio">Juni</string>
+	<string name="mes_julio">July</string>
+	<string name="mes_agosto">August</string>
+	<string name="mes_septiembre">September</string>
+	<string name="mes_octubre">Oktober</string>
+	<string name="mes_noviembre">November</string>
+	<string name="mes_diciembre">Dezember</string>
+
+	<!-- Tipos de deporte -->
+	<string name="tipod_andar">Laufen</string>
+	<string name="tipod_correr">Rennen</string>
+	<string name="tipod_senderismo">Wandern</string>
+	<string name="tipod_mtb">Mountain bike</string> 
+	<string name="tipod_ciclismo">Radfahren</string>
+
+	<!-- Columnas -->
+	<string name="col_sesiones">Sitzungen</string>
+	<string name="col_distancia">Entfernung(Km)</string>
+	<string name="col_calorias">Kalorien</string>
+	<string name="col_tiempo">Laufzeit</string>
+	<string name="col_tipodeporte">Sportart</string>
+	<string name="col_kmtotal">Gesamten Km</string>
+	<string name="col_kmmedia">Durchschnittlichen Km</string>
+	<string name="col_kmhora">Km/h</string> 
+	<string name="col_minutoskm">Zeit/Km</string>
+	<string name="col_tiempototal">Gesamte Laufzeit</string>
+	<string name="col_tiempomedio">Durchschnittliche Laufzeit</string>
+	<string name="col_caloriastotal">Total Kalorien</string>
+	<string name="col_caloriasmedia">Durchschnittlichen Kalorien</string>
+	<string name="col_caloriaskm">Kalorien/Km</string>
+	<string name="col_caloriashora">Kalorien/Stunde</string>
+	<string name="col_anio">Jahr</string>
+	<string name="col_mes">Monat</string>
+	<string name="col_dia">Tag</string>
+	<string name="col_inicio">Anfangsuhrzeit</string>
+	<string name="col_fin">Enduhrzeit</string>
+	<string name="col_ritmo_media">Durchschnittliches Tempo</string> 
+	<string name="col_velocidad_media">Durchschnittsgeschwindigkeit</string>
+	<string name="col_elevacion_ganada">Bodenerhebung Aufstieg</string> 
+	<string name="col_elevacion_perdida">Bodenerhebung Abstieg</string>
+	<string name="col_pausa">Pause</string>
+
+	<!-- Titulos de estadisticas -->
+	<string name="titulo_est_total">Gesamtstatistiken</string>
+	<string name="titulo_est_portipodeporte">Nach Sportart</string>
+	<string name="titulo_est_poranios">Nach Jahr</string>
+	<string name="titulo_est_poraniostipodeporte">Nach Jahr und Sportart</string>
+	<string name="titulo_est_pormeses">Nach Monat</string>
+	<string name="titulo_est_pormesestipodeporte">Nach Monat und Sportart</string>
+	<string name="titulo_est_caloriastipodeporte">Kalorien nach Sportart</string>
+	<string name="titulo_est_relacioncompleta">Komplettliste</string>
+	<string name="titulo_est_relacioncompleta_fichas">Komplettliste - Karten</string>
+	
+	<!-- Descripciones de estadisticas -->
+	<string name="desc_est_total">Sitzung umfassenden Daten</string>
+	<string name="desc_est_portipodeporte">Sitzungumfassenden Daten nach Sportart</string>
+	<string name="desc_est_poranios">Sitzungumfassenden Daten nach Jahr</string>
+	<string name="desc_est_poraniostipodeporte">Sitzungumfassenden Daten nach Jahr und Sportart</string>
+	<string name="desc_est_pormeses">Sitzungumfassenden Daten nach Monat</string>
+	<string name="desc_est_pormesestipodeporte">Sitzungumfassenden Daten nach Monat und Sportart</string>
+	<string name="desc_est_caloriastipodeporte">Kalorien Verbrauch nach Sportart</string>
+	<string name="desc_est_relacioncompleta">Komplettsitzung Liste</string>
+	<string name="desc_est_relacioncompleta_fichas">Komplettsitzung Liste in Karten ormat</string>
+	
+</resources>

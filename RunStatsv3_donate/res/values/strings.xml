@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Titles -->
+    <string name="app_name">RunStats :)</string>
+	<string name="app_title">Runtastic Statistics</string>
+	<string name="select_field">Select a field</string>
+	<string name="select_sortorder">Select an order</string>
+	<string name="select_value">Select a value</string>
+	<string name="filter_applied">Filters applied</string>
+	<string name="sort_applied">Sort applied</string>
+	<string name="filter">Filter</string>
+	<string name="order">Sort</string>
+	<string name="select_stat">"Select a statistic"</string>
+
+	<string name="order_asc">Ascending</string>
+	<string name="order_desc">Descending</string>
+
+
+	<!-- Preferences -->
+	<string name="preferencias">RunStats Preferences</string>
+	
+    <string name="prefs_ud">Units</string>
+	<string name="prefs_ud_select">Select unit</string>
+    <string name="prefs_ud_long">Distance units</string>
+	<string name="pref_ud_km">Kilometers</string>
+	<string name="pref_ud_ml">Miles</string>
+
+	<string-array name = "nombreunidades">
+		<item>Kilometers</item>
+		<item>Miles</item>
+	</string-array>
+	<string-array name = "codigounidades">
+		<item>km</item>
+		<item>ml</item>
+	</string-array>
+	
+	<string name="prefs_idioma">Language</string>
+	<string name="prefs_idioma_select">Select language</string>
+	<string name="prefs_idioma_app">Application language (restart required)</string>
+
+	<string-array name = "nombreidiomas">
+		<item>Spanish</item>
+		<item>English</item>
+		<item>German</item>
+	</string-array>
+	<string-array name = "codigoidiomas">
+		<item>es</item>
+		<item>en</item>
+		<item>de</item>
+	</string-array>
+	
+	<!-- Messages -->
+	<string name="db_not_found_title">Database not found</string>
+	<string name="db_not_found">Runtastic database not found in SD card. RunStats can only access Runtastic database in one of these two conditions:\n   - Runtastic is installed on SD card\n   - You change database location in Runtastic settings (General options / Database location)</string>
+	<string name="no_description">Empty description</string>
+	
+    <!-- Actions -->
+    <string name="action_previous">Previous</string>
+    <string name="action_next">Next</string>
+	<string name="action_exit">Exit</string>
+	<string name="action_back">Back</string>
+	<string name="action_sort">Sort</string>
+	<string name="action_filter">Filter</string>
+
+	<string name="action_addsort">Add sort</string>
+	<string name="action_addfilter">Add filter</string>
+	<string name="action_nosort">Discard sort</string>
+	<string name="action_nofilter">Discard filters</string>  
+	<string name="action_info">Information</string>  
+
+	<!-- Meses -->
+	<string name="mes_enero">January</string>
+	<string name="mes_febrero">February</string>
+	<string name="mes_marzo">March</string>
+	<string name="mes_abril">April</string>
+	<string name="mes_mayo">May</string>
+	<string name="mes_junio">June</string>
+	<string name="mes_julio">July</string>
+	<string name="mes_agosto">August</string>
+	<string name="mes_septiembre">September</string>
+	<string name="mes_octubre">October</string>
+	<string name="mes_noviembre">November</string>
+	<string name="mes_diciembre">December</string>
+
+	<!-- Tipos de deporte -->
+	<string name="tipod_andar">Walking</string>
+	<string name="tipod_correr">Running</string>
+	<string name="tipod_senderismo">Hiking</string>
+	<string name="tipod_mtb">Mountain bike</string>
+	<string name="tipod_ciclismo">Cycling</string>
+
+	<!-- Columnas -->
+	<string name="col_sesiones">Sessions</string>
+	<string name="col_distancia">Length(Km)</string>
+	<string name="col_calorias">Calories</string>
+	<string name="col_tiempo">Runtime</string>
+	<string name="col_tipodeporte">Sport type</string>
+	<string name="col_kmtotal">Total Km</string>
+	<string name="col_kmmedia">Average Km</string>
+	<string name="col_kmhora">Km/h</string>
+	<string name="col_minutoskm">Time/Km</string>
+	<string name="col_tiempototal">Total runtime</string>
+	<string name="col_tiempomedio">Average runtime</string>
+	<string name="col_caloriastotal">Total calories</string>
+	<string name="col_caloriasmedia">Average calories</string>
+	<string name="col_caloriaskm">Calories/Km</string>
+	<string name="col_caloriashora">Calories/Hour</string>
+	<string name="col_anio">Year</string>
+	<string name="col_mes">Month</string>
+	<string name="col_dia">Day</string>
+	<string name="col_inicio">Start time</string>
+	<string name="col_fin">End time</string>
+	<string name="col_ritmo_media">Average rate</string>
+	<string name="col_velocidad_media">Average speed</string>
+	<string name="col_elevacion_ganada">Elevation gain</string>
+	<string name="col_elevacion_perdida">Elevation loss</string>
+	<string name="col_pausa">Pause</string>
+
+	<!-- Titulos de estadisticas -->
+	<string name="titulo_est_total">Total</string>
+	<string name="titulo_est_portipodeporte">By type of sport</string>
+	<string name="titulo_est_poranios">By year</string>
+	<string name="titulo_est_poraniostipodeporte">By year and type of sport</string>
+	<string name="titulo_est_pormeses">By month</string>
+	<string name="titulo_est_pormesestipodeporte">By month and type of sport</string>
+	<string name="titulo_est_caloriastipodeporte">Calories by type of sport</string>
+	<string name="titulo_est_relacioncompleta">Complete list</string>
+	<string name="titulo_est_relacioncompleta_fichas">Complete list - Cards</string>
+	
+	<!-- Descripciones de estadisticas -->
+	<string name="desc_est_total">Global session data</string>
+	<string name="desc_est_portipodeporte">Global session data by type of sport</string>
+	<string name="desc_est_poranios">Global session data by year</string>
+	<string name="desc_est_poraniostipodeporte">Global session data by year and type of sport</string>
+	<string name="desc_est_pormeses">Global session data by month</string>
+	<string name="desc_est_pormesestipodeporte">Global session data by month and type of sport</string>
+	<string name="desc_est_caloriastipodeporte">Consumption of calories by type of sport</string>
+	<string name="desc_est_relacioncompleta">Complete session list</string>
+	<string name="desc_est_relacioncompleta_fichas">Complete session list in cards format</string>
+	
+</resources>

@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package es.fjpd.runstats3;
+package es.fjpd.runstats3donate;
 
 public final class R {
     public static final class array {
